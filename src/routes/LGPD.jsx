@@ -36,7 +36,7 @@ const LGPD = () => {
 
       <main className="container py-3 pb-5 mb-2">
 
-        {/* Cabeçalho */}
+   
         <section className="text-center mb-4">
           <div
             className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
@@ -52,7 +52,7 @@ const LGPD = () => {
           </p>
         </section>
 
-        {/* Intro */}
+       
         <section
           className="rounded-3 p-3 mb-3"
           style={{ backgroundColor: 'rgba(28,151,112,0.07)', border: '1px solid rgba(28,151,112,0.2)' }}
@@ -64,7 +64,7 @@ const LGPD = () => {
           </p>
         </section>
 
-        {/* O que coletamos */}
+      
         <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
           <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
             O que coletamos
@@ -84,7 +84,7 @@ const LGPD = () => {
           </div>
         </section>
 
-        {/* Para que usamos */}
+    
         <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
           <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
             Para que usamos
@@ -104,7 +104,7 @@ const LGPD = () => {
           </div>
         </section>
 
-        {/* Você decide */}
+      
         <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
           <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
             Você decide
@@ -124,7 +124,7 @@ const LGPD = () => {
           </div>
         </section>
 
-        {/* Aviso LGPD */}
+    
         <section className="text-center mb-4">
           <span
             className="d-inline-block px-3 py-1 rounded-pill fw-medium"
@@ -134,7 +134,7 @@ const LGPD = () => {
           </span>
         </section>
 
-        {/* Botões */}
+
         <div className="row g-3">
           <div className="col-12 col-sm-6">
             <button
@@ -149,7 +149,7 @@ const LGPD = () => {
             <button
               className="btn w-100 fw-bold rounded-3 py-3 d-flex align-items-center justify-content-center gap-2 text-white"
               style={{ backgroundColor: '#1c9770', fontSize: '15px', boxShadow: '0 4px 12px rgba(28,151,112,0.3)' }}
-              onClick={() => navigate('/onboarding')}
+              onClick={() => navigate('/Onboarding')}
             >
               <FiCheck size={18} /> Concordo
             </button>
