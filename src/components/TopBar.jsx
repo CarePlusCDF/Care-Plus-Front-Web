@@ -1,4 +1,4 @@
-import { FiBell } from 'react-icons/fi'
+import { FiAward, FiBell } from 'react-icons/fi'
 
 const TopBar = ({ points = 0, showPoints = true }) => {
   return (
@@ -7,7 +7,7 @@ const TopBar = ({ points = 0, showPoints = true }) => {
       <div>
         {showPoints && (
           <span className="d-flex align-items-center gap-1 bg-light rounded-pill px-3 py-1">
-            <span>🏆</span>
+            <FiAward size={18} color="#1c9770" />
             <span className="fw-bold small">{points.toLocaleString('pt-BR')}</span>
           </span>
         )}

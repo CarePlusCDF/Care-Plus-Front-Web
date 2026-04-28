@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --bs-primary: #1c9770;
+  --bs-primary-rgb: 28, 151, 112;
+  --bs-secondary: #93CB52;
+  --bs-secondary-rgb: 147, 203, 82;
+  --bs-success: #7AD180;
+  --bs-success-rgb: 122, 209, 128;
+  --bs-info: #7AD1C3;
+  --bs-info-rgb: 122, 209, 195;
+  --bs-body-font-family: 'Roboto', sans-serif;
+  --bs-body-bg: #F4F6F8;
+  --bs-border-color: #E4E7EB;
+}
+
+.btn-primary {
+  background-color: #1c9770 !important;
+  border-color: #1c9770 !important;
+}
+
+.btn-primary:hover {
+  background-color: #167a5a !important;
+  border-color: #167a5a !important;
+}
+
+.text-primary {
+  color: #1c9770 !important;
+}
+
+.bg-primary {
+  background-color: #1c9770 !important;
+}
+
+.border-primary {
+  border-color: #1c9770 !important;
+}
+
+.text-secondary-brand {
+  color: #93CB52 !important;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #1c9770 0%, #167a5a 100%) !important;
+}
+
+.bg-gradient-accent1 {
+  background: linear-gradient(135deg, #7AD180 0%, #1c9770 100%) !important;
+}
+
+.bg-gradient-accent2 {
+  background: linear-gradient(135deg, #7AD1C3 0%, #1c9770 100%) !important;
+}
+
+.shadow-primary {
+  box-shadow: 0 4px 16px rgba(28, 151, 112, 0.25) !important;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
