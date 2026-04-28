@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FiArrowRight, FiCreditCard, FiShield, FiHeart } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ const Home = () => {
       subtitle: 'Missões & Recompensas',
       clickable: true,
       bg: '#1c9770',
-      path: '/onboarding',
+      path: '/lgpd',
     },
   ]
 
@@ -90,7 +90,7 @@ const Home = () => {
               boxShadow: '0 8px 24px rgba(28,151,112,0.3)',
               transition: 'transform 0.2s',
             }}
-            onClick={() => navigate('/onboarding')}
+            onClick={() => navigate('/lgpd')}
             onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
             onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
           >
