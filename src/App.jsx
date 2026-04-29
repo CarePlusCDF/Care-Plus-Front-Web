@@ -12,7 +12,7 @@ import Mind from './routes/Mind'
 import Connect from './routes/Connect'
 import Scan from './routes/Scan'
 import Noticias from './routes/Noticias'
-
+import Perfil from './routes/Perfil'
 
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
         <Route path="/connect" element={<Connect />} />
         <Route path="/scan" element={<Scan />} />
         <Route path="/noticias" element={<Noticias />} />
-
+        <Route path="/perfil" element={<Perfil />} />
 
       </Routes>
     </Router>
