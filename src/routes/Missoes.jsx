@@ -45,7 +45,6 @@ const Missoes = () => {
 
       <main className="container py-3 pb-5 mb-4">
 
-        {/* Cabeçalho */}
         <section className="d-flex align-items-center gap-2 mb-4">
           <button
             className="btn btn-link p-0 text-decoration-none"
@@ -57,7 +56,6 @@ const Missoes = () => {
           <h1 className="fw-bold mb-0 fs-5 text-dark">Missões</h1>
         </section>
 
-        {/* Desafio atual */}
         <section className="mb-4">
           <div className="bg-white rounded-3 border p-3">
             <div className="d-flex justify-content-between align-items-start mb-2">
@@ -79,7 +77,6 @@ const Missoes = () => {
           </div>
         </section>
 
-        {/* Streak + Mapa de missões */}
         <section className="mb-4">
           <div className="bg-white rounded-3 border p-3">
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -91,7 +88,6 @@ const Missoes = () => {
               </div>
             </div>
 
-            {/* Mapa visual */}
             <div className="d-flex align-items-center justify-content-center gap-2 flex-wrap">
               {mapaMissoes.map(({ id, desbloqueada, concluida }) => (
                 <div key={id} className="d-flex flex-column align-items-center gap-1">
@@ -125,7 +121,6 @@ const Missoes = () => {
           </div>
         </section>
 
-        {/* Missões Connect+ */}
         <section className="mb-4">
           <h2 className="fw-bold mb-3 fs-6 text-dark">Missões Connect+</h2>
           <div className="d-flex flex-column gap-2">
@@ -156,7 +151,6 @@ const Missoes = () => {
           </div>
         </section>
 
-        {/* Missões personalizadas */}
         <section className="mb-4">
           <h2 className="fw-bold mb-3 fs-6 text-dark">Missões personalizadas</h2>
           <div className="d-flex flex-column gap-2">
@@ -187,7 +181,6 @@ const Missoes = () => {
           </div>
         </section>
 
-        {/* Desafio semanal */}
         <section className="mb-4">
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h2 className="fw-bold mb-0 fs-6 text-dark">Desafio semanal</h2>
@@ -222,7 +215,6 @@ const Missoes = () => {
           </div>
         </section>
 
-        {/* Impulso+ */}
         <section>
           <div
             className="bg-white rounded-3 border p-4 text-center"

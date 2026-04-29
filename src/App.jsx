@@ -6,6 +6,8 @@ import Cadastro from './routes/Cadastro'
 import Inicial from './routes/Inicial'
 import Missoes from './routes/Missoes'
 import Ranking from './routes/Ranking'
+import Impulso from './routes/Impulso'
+
 
 
 const App = () => {
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/inicial" element={<Inicial />} />
         <Route path="/missoes" element={<Missoes />} />
         <Route path="/Ranking" element={<Ranking />} />
+        <Route path="/Impulso" element={<Impulso />} />
 
       </Routes>
     </Router>

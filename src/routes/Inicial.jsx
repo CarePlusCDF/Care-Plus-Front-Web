@@ -44,7 +44,6 @@ const Inicial = () => {
 
       <main className="container py-3 pb-5 mb-4">
 
-        {/* Saudação */}
         <section className="mb-4">
           <p className="mb-0 text-muted small">Olá,</p>
           <h1 className="fw-bold mb-0 fs-4 text-dark-custom">Renato!</h1>
@@ -53,7 +52,6 @@ const Inicial = () => {
           </p>
         </section>
 
-        {/* Menu rápido */}
         <section className="mb-4">
           <div className="row g-3 justify-content-center">
             {quickMenuItems.map(({ id, label, icon: Icon, path, iconColor, bgClass }) => (
@@ -72,7 +70,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Scan Diário */}
         <section className="mb-4">
           <div
             className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-primary shadow-primary cursor-pointer"
@@ -90,7 +87,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Missões ativas */}
         <section className="mb-4">
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Missões ativas</h2>
@@ -126,7 +122,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Benefícios */}
         <section className="mb-4">
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Benefícios</h2>
@@ -153,7 +148,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Mind+ */}
         <section className="mb-4">
           <div
             className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent1 shadow-primary cursor-pointer"
@@ -171,7 +165,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Connect+ */}
         <section className="mb-4">
           <div
             className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent2 shadow-primary cursor-pointer"
@@ -189,7 +182,6 @@ const Inicial = () => {
           </div>
         </section>
 
-        {/* Notícias */}
         <section>
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Notícias</h2>
