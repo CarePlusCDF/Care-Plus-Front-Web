@@ -214,3 +214,8 @@ body {
 .bar-inactive { height: 20px; }
 
 .progress-60 { width: 60% !important; }
+
+.avatar-xl {
+  width: 180px;
+  height: 180px;
+}

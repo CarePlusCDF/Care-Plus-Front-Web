@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiZap, FiTrendingUp, FiStar, FiAward } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/BottomNav'
+import flux from '../assets/flux.png'
 
 const Impulso = () => {
   const navigate = useNavigate()
@@ -33,9 +34,12 @@ const Impulso = () => {
 
         <section className="mb-4">
           <div className="bg-gradient-primary shadow-primary rounded-3 p-4 text-center">
-            <div className="avatar-lg rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center mx-auto mb-3">
-              <FiZap size={32} color="#fff" />
-            </div>
+            <img
+              src={flux}
+              alt="Flux"
+              className="avatar-xl rounded-circle"
+              style={{ objectFit: 'contain' }}
+            />
             <h2 className="fw-bold text-white fs-4 mb-1">Flux</h2>
             <p className="text-white opacity-75 small mb-3">Seu amigo de streak</p>
             <div className="d-inline-flex align-items-center gap-2 bg-white bg-opacity-25 rounded-pill px-3 py-2">
