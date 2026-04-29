@@ -3,7 +3,7 @@ import { FiArrowLeft, FiZap, FiTrendingUp, FiStar, FiAward } from 'react-icons/f
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/BottomNav'
 
-const ImpulsoPage = () => {
+const Impulso = () => {
   const navigate = useNavigate()
   const points = 1500
   const streakDias = 7
@@ -92,4 +92,4 @@ const ImpulsoPage = () => {
   )
 }
 
-export default ImpulsoPage
+export default Impulso

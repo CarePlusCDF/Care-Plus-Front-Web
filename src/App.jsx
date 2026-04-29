@@ -7,7 +7,7 @@ import Inicial from './routes/Inicial'
 import Missoes from './routes/Missoes'
 import Ranking from './routes/Ranking'
 import Impulso from './routes/Impulso'
-
+import Beneficios from './routes/Beneficios'
 
 
 const App = () => {
@@ -20,8 +20,9 @@ const App = () => {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/inicial" element={<Inicial />} />
         <Route path="/missoes" element={<Missoes />} />
-        <Route path="/Ranking" element={<Ranking />} />
-        <Route path="/Impulso" element={<Impulso />} />
+        <Route path="/ranking" element={<Ranking />} />
+        <Route path="/impulso" element={<Impulso />} />
+        <Route path="/beneficios" element={<Beneficios />} />
 
       </Routes>
     </Router>

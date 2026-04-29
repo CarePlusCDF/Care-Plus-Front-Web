@@ -210,4 +210,7 @@ body {
 }
 
 .bar-active { height: 40px; }
+
 .bar-inactive { height: 20px; }
+
+.progress-60 { width: 60% !important; }
