@@ -8,6 +8,7 @@ import Missoes from './routes/Missoes'
 import Ranking from './routes/Ranking'
 import Impulso from './routes/Impulso'
 import Beneficios from './routes/Beneficios'
+import Mind from './routes/Mind'
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/impulso" element={<Impulso />} />
         <Route path="/beneficios" element={<Beneficios />} />
+        <Route path="/mind" element={<Mind />} />
 
       </Routes>
     </Router>
