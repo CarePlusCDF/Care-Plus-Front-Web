@@ -9,6 +9,9 @@ import Ranking from './routes/Ranking'
 import Impulso from './routes/Impulso'
 import Beneficios from './routes/Beneficios'
 import Mind from './routes/Mind'
+import Connect from './routes/Connect'
+import Scan from './routes/Scan'
+
 
 
 const App = () => {
@@ -25,6 +28,9 @@ const App = () => {
         <Route path="/impulso" element={<Impulso />} />
         <Route path="/beneficios" element={<Beneficios />} />
         <Route path="/mind" element={<Mind />} />
+        <Route path="/connect" element={<Connect />} />
+        <Route path="/scan" element={<Scan />} />
+
 
       </Routes>
     </Router>
