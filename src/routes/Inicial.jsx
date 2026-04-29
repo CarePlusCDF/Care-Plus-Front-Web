@@ -25,32 +25,30 @@ const Inicial = () => {
   ]
 
   const beneficios = [
-    { id: 1, title: 'Cashback Nubank', points: 1500, color: '#1c9770' },
-    { id: 2, title: 'Desconto iFood R$10', points: 800, color: '#7AD1C3' },
-    { id: 3, title: 'Desconto Apple R$40', points: 2000, color: '#93CB52' },
+    { id: 1, title: 'Cashback Nubank', points: 1500, bgClass: 'bg-primary-subtle-custom' },
+    { id: 2, title: 'Desconto iFood R$10', points: 800, bgClass: 'bg-accent2-subtle' },
+    { id: 3, title: 'Desconto Apple R$40', points: 2000, bgClass: 'bg-primary-subtle-custom' },
   ]
 
   const quickMenuItems = [
-    { id: 'missoes', label: 'Missões', icon: FiTarget, path: '/missoes', color: '#1c9770' },
-    { id: 'mind', label: 'Mind+', icon: FiHeart, path: '/mind', color: '#7AD180' },
-    { id: 'connect', label: 'Connect+', icon: FiWifi, path: '/connect', color: '#7AD1C3' },
-    { id: 'noticias', label: 'Notícias', icon: FiFileText, path: '/noticias', color: '#93CB52' },
-    { id: 'perfil', label: 'Perfil', icon: FiUser, path: '/perfil', color: '#1c9770' },
+    { id: 'missoes', label: 'Missões', icon: FiTarget, path: '/missoes', iconColor: '#1c9770', bgClass: 'bg-primary-subtle-custom' },
+    { id: 'mind', label: 'Mind+', icon: FiHeart, path: '/mind', iconColor: '#7AD180', bgClass: 'bg-accent2-subtle' },
+    { id: 'connect', label: 'Connect+', icon: FiWifi, path: '/connect', iconColor: '#7AD1C3', bgClass: 'bg-accent2-subtle' },
+    { id: 'noticias', label: 'Notícias', icon: FiFileText, path: '/noticias', iconColor: '#93CB52', bgClass: 'bg-primary-subtle-custom' },
+    { id: 'perfil', label: 'Perfil', icon: FiUser, path: '/perfil', iconColor: '#1c9770', bgClass: 'bg-primary-subtle-custom' },
   ]
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: '#F4F6F8' }}>
+    <div className="min-vh-100 bg-body">
       <TopBar points={points} showPoints={true} />
 
       <main className="container py-3 pb-5 mb-4">
 
         {/* Saudação */}
         <section className="mb-4">
-          <p className="mb-0 text-secondary small">Olá,</p>
-          <h1 className="fw-bold mb-0" style={{ fontSize: '26px', color: '#1A202C' }}>
-            Renato!
-          </h1>
-          <p className="mb-0 mt-1" style={{ fontSize: '13px', color: '#6B7685' }}>
+          <p className="mb-0 text-muted small">Olá,</p>
+          <h1 className="fw-bold mb-0 fs-4 text-dark-custom">Renato!</h1>
+          <p className="mb-0 mt-1 text-muted-custom fs-7">
             Continue sua jornada de bem-estar hoje.
           </p>
         </section>
@@ -58,28 +56,16 @@ const Inicial = () => {
         {/* Menu rápido */}
         <section className="mb-4">
           <div className="row g-3 justify-content-center">
-            {quickMenuItems.map(({ id, label, icon: Icon, path, color }) => (
+            {quickMenuItems.map(({ id, label, icon: Icon, path, iconColor, bgClass }) => (
               <div key={id} className="col">
                 <div
-                  className="d-flex flex-column align-items-center gap-2"
-                  style={{ cursor: 'pointer' }}
+                  className="d-flex flex-column align-items-center gap-2 cursor-pointer"
                   onClick={() => navigate(path)}
                 >
-                  <div
-                    className="d-flex align-items-center justify-content-center rounded-3"
-                    style={{
-                      width: '52px', height: '52px',
-                      backgroundColor: `${color}22`,
-                      transition: 'transform 0.2s',
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-                  >
-                    <Icon size={22} color={color} />
+                  <div className={`icon-box-sm rounded-3 d-flex align-items-center justify-content-center ${bgClass}`}>
+                    <Icon size={22} color={iconColor} />
                   </div>
-                  <span style={{ fontSize: '11px', color: '#6B7685', fontWeight: '500', textAlign: 'center' }}>
-                    {label}
-                  </span>
+                  <span className="text-muted-custom fs-8 fw-medium text-center">{label}</span>
                 </div>
               </div>
             ))}
@@ -89,24 +75,16 @@ const Inicial = () => {
         {/* Scan Diário */}
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between"
-            style={{
-              background: 'linear-gradient(135deg, #1c9770 0%, #167a5a 100%)',
-              boxShadow: '0 4px 16px rgba(28,151,112,0.25)',
-              cursor: 'pointer',
-            }}
+            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-primary shadow-primary cursor-pointer"
             onClick={() => navigate('/scan')}
           >
             <div>
-              <p className="fw-bold text-white mb-0" style={{ fontSize: '15px' }}>Scan Diário</p>
-              <p className="mb-0" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)' }}>
+              <p className="fw-bold text-white mb-0 fs-7">Scan Diário</p>
+              <p className="mb-0 text-white opacity-75 fs-8">
                 Realize o scan e ganhe uma caixa surpresa
               </p>
             </div>
-            <div
-              className="d-flex align-items-center justify-content-center rounded-3"
-              style={{ width: '44px', height: '44px', backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
+            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
               <FiArrowRight size={20} color="#fff" />
             </div>
           </div>
@@ -115,15 +93,12 @@ const Inicial = () => {
         {/* Missões ativas */}
         <section className="mb-4">
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0" style={{ fontSize: '16px', color: '#1A202C' }}>
-              Missões ativas
-            </h2>
+            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Missões ativas</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none d-flex align-items-center gap-1"
-              style={{ fontSize: '13px', color: '#1c9770' }}
+              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
               onClick={() => navigate('/missoes')}
             >
-              Ver mais <FiArrowRight size={13} />
+              Ver mais <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
 
@@ -131,32 +106,21 @@ const Inicial = () => {
             {missoesAtivas.map(({ id, title, progress, icon: Icon }) => (
               <div
                 key={id}
-                className="bg-white rounded-3 p-3 d-flex align-items-center gap-3"
-                style={{ border: '1px solid #E4E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                className="bg-white rounded-3 p-3 d-flex align-items-center gap-3 border shadow-card"
               >
-                <div
-                  className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-                  style={{ width: '40px', height: '40px', backgroundColor: 'rgba(28,151,112,0.08)' }}
-                >
+                <div className="icon-box-sm rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 bg-primary-subtle-custom">
                   <Icon size={18} color="#1c9770" />
                 </div>
                 <div className="flex-fill">
-                  <p className="fw-medium mb-1" style={{ fontSize: '13px', color: '#1A202C' }}>{title}</p>
-                  <div className="rounded-pill overflow-hidden" style={{ height: '5px', backgroundColor: '#E4E7EB' }}>
+                  <p className="fw-medium mb-1 fs-7 text-dark-custom">{title}</p>
+                  <div className="progress rounded-pill progress-h-sm">
                     <div
-                      className="rounded-pill"
-                      style={{
-                        width: `${progress}%`,
-                        height: '100%',
-                        backgroundColor: progress === 100 ? '#93CB52' : '#1c9770',
-                        transition: 'width 0.4s ease',
-                      }}
+                      className={`progress-bar rounded-pill ${progress === 100 ? 'bg-success' : 'bg-primary'}`}
+                      style={{ width: `${progress}%` }}
                     />
                   </div>
                 </div>
-                <span className="fw-bold flex-shrink-0" style={{ fontSize: '12px', color: '#1c9770' }}>
-                  {progress}%
-                </span>
+                <span className="fw-bold text-primary flex-shrink-0 fs-9">{progress}%</span>
               </div>
             ))}
           </div>
@@ -165,75 +129,43 @@ const Inicial = () => {
         {/* Benefícios */}
         <section className="mb-4">
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0" style={{ fontSize: '16px', color: '#1A202C' }}>
-              Benefícios
-            </h2>
+            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Benefícios</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none d-flex align-items-center gap-1"
-              style={{ fontSize: '13px', color: '#1c9770' }}
+              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
               onClick={() => navigate('/beneficios')}
             >
-              Ver todos <FiArrowRight size={13} />
+              Ver todos <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
 
-          <div className="d-flex d-md-none gap-3 pb-2" style={{ overflowX: 'auto' }}>
-            {beneficios.map(({ id, title, points: pts, color }) => (
-              <div
-                key={id}
-                className="rounded-3 p-3 flex-shrink-0"
-                style={{ width: '160px', border: '1px solid #E4E7EB', backgroundColor: '#fff' }}
-              >
-                <div className="rounded-3 mb-2" style={{ width: '36px', height: '36px', backgroundColor: `${color}22` }} />
-                <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#1A202C' }}>{title}</p>
-                <p className="mb-0 fw-bold" style={{ fontSize: '12px', color: '#1c9770' }}>
-                  {pts.toLocaleString('pt-BR')} pts
-                </p>
+          <div className="row g-3">
+            {beneficios.map(({ id, title, points: pts, bgClass }) => (
+              <div key={id} className="col-12 col-md-4">
+                <div className="bg-white rounded-3 p-3 border shadow-card h-100">
+                  <div className={`icon-box-xs rounded-3 mb-2 ${bgClass}`} />
+                  <p className="fw-bold mb-1 fs-7 text-dark-custom">{title}</p>
+                  <p className="mb-0 fw-bold text-primary fs-9">
+                    {pts.toLocaleString('pt-BR')} pts
+                  </p>
+                </div>
               </div>
             ))}
-          </div>
-
-          <div className="d-none d-md-block">
-            <div className="row g-3">
-              {beneficios.map(({ id, title, points: pts, color }) => (
-                <div key={id} className="col-md-4">
-                  <div
-                    className="rounded-3 p-3 h-100"
-                    style={{ border: '1px solid #E4E7EB', backgroundColor: '#fff' }}
-                  >
-                    <div className="rounded-3 mb-2" style={{ width: '36px', height: '36px', backgroundColor: `${color}22` }} />
-                    <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#1A202C' }}>{title}</p>
-                    <p className="mb-0 fw-bold" style={{ fontSize: '12px', color: '#1c9770' }}>
-                      {pts.toLocaleString('pt-BR')} pts
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
         {/* Mind+ */}
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between"
-            style={{
-              background: 'linear-gradient(135deg, #7AD180 0%, #1c9770 100%)',
-              boxShadow: '0 4px 16px rgba(122,209,128,0.25)',
-              cursor: 'pointer',
-            }}
+            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent1 shadow-primary cursor-pointer"
             onClick={() => navigate('/mind')}
           >
             <div>
-              <p className="fw-bold text-white mb-0" style={{ fontSize: '15px' }}>Mind+</p>
-              <p className="mb-0" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)' }}>
+              <p className="fw-bold text-white mb-0 fs-7">Mind+</p>
+              <p className="mb-0 text-white opacity-75 fs-9">
                 Apoio psicológico a qualquer hora e lugar
               </p>
             </div>
-            <div
-              className="d-flex align-items-center justify-content-center rounded-3"
-              style={{ width: '44px', height: '44px', backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
+            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
               <FiHeart size={20} color="#fff" />
             </div>
           </div>
@@ -242,24 +174,16 @@ const Inicial = () => {
         {/* Connect+ */}
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between"
-            style={{
-              background: 'linear-gradient(135deg, #7AD1C3 0%, #1c9770 100%)',
-              boxShadow: '0 4px 16px rgba(122,209,195,0.25)',
-              cursor: 'pointer',
-            }}
+            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent2 shadow-primary cursor-pointer"
             onClick={() => navigate('/connect')}
           >
             <div>
-              <p className="fw-bold text-white mb-0" style={{ fontSize: '15px' }}>Connect+</p>
-              <p className="mb-0" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)' }}>
+              <p className="fw-bold text-white mb-0 fs-7">Connect+</p>
+              <p className="mb-0 text-white opacity-75 fs-9">
                 Sono, batimentos e metas num só lugar
               </p>
             </div>
-            <div
-              className="d-flex align-items-center justify-content-center rounded-3"
-              style={{ width: '44px', height: '44px', backgroundColor: 'rgba(255,255,255,0.15)' }}
-            >
+            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
               <FiWifi size={20} color="#fff" />
             </div>
           </div>
@@ -268,32 +192,26 @@ const Inicial = () => {
         {/* Notícias */}
         <section>
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0" style={{ fontSize: '16px', color: '#1A202C' }}>
-              Notícias
-            </h2>
+            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Notícias</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none d-flex align-items-center gap-1"
-              style={{ fontSize: '13px', color: '#1c9770' }}
+              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
               onClick={() => navigate('/noticias')}
             >
-              Ver mais <FiArrowRight size={13} />
+              Ver mais <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
 
           <div
-            className="bg-white rounded-3 p-3"
-            style={{ border: '1px solid #E4E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', cursor: 'pointer' }}
+            className="bg-white rounded-3 p-3 border shadow-card cursor-pointer"
             onClick={() => navigate('/noticias')}
           >
-            <p className="fw-bold mb-1" style={{ fontSize: '14px', color: '#1A202C' }}>
+            <p className="fw-bold mb-1 fs-7 text-dark-custom">
               Saúde mental: afastamentos dobram em dez anos e chegam a 440 mil
             </p>
-            <p className="text-secondary mb-2" style={{ fontSize: '12px', lineHeight: '1.5' }}>
+            <p className="text-muted mb-2 fs-9">
               Em 2014, quase 203 mil brasileiros foram afastados do trabalho em razão de episódios depressivos e transtornos de ansiedade.
             </p>
-            <span style={{ fontSize: '12px', color: '#1c9770', fontWeight: '600' }}>
-              Ver matéria completa
-            </span>
+            <span className="text-primary fw-bold fs-9">Ver matéria completa</span>
           </div>
         </section>
 
