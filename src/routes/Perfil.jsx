@@ -141,7 +141,7 @@ const Perfil = () => {
               className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
               onClick={() => navigate('/cadastro')}
             >
-              <FiEdit2 size={13} color="#1c9770" /> Alterar
+              Alterar
             </button>
           </div>
           <div className="bg-white rounded-3 border shadow-card p-3">

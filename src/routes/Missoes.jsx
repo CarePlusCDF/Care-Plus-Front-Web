@@ -56,7 +56,30 @@ const Missoes = () => {
           <h1 className="fw-bold mb-0 fs-5 text-dark">Missões</h1>
         </section>
 
-        <section className="mb-4">
+        <section>
+          <div
+            className="bg-white rounded-3 border-primary-subtle p-4 text-center mb-4"
+            role="button"
+            onClick={() => navigate('/impulso')}
+          >
+            <div
+              className="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+              style={{ width: '64px', height: '64px', backgroundColor: 'rgba(147,203,82,0.15)' }}
+            >
+              <FiTrendingUp size={28} color="#93CB52" />
+            </div>
+            <h2 className="fw-bold fs-6 text-dark mb-1">Impulso+</h2>
+            <p className="text-muted small mb-2">Esse é o Flux, seu amigo de streak</p>
+            <span
+              className="fw-bold d-inline-block px-3 py-1 rounded-pill"
+              style={{ backgroundColor: 'rgba(28,151,112,0.1)', color: '#1c9770', fontSize: '13px' }}
+            >
+              {streakDias} dias
+            </span>
+          </div>
+        </section>
+
+        <section className="mb-4 mt-4">
           <div className="bg-white rounded-3 border p-3">
             <div className="d-flex justify-content-between align-items-start mb-2">
               <div>
@@ -212,29 +235,6 @@ const Missoes = () => {
               </p>
             </div>
             <FiArrowRight size={20} color="#fff" />
-          </div>
-        </section>
-
-        <section>
-          <div
-            className="bg-white rounded-3 border p-4 text-center"
-            role="button"
-            onClick={() => navigate('/impulso')}
-          >
-            <div
-              className="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
-              style={{ width: '64px', height: '64px', backgroundColor: 'rgba(147,203,82,0.15)' }}
-            >
-              <FiTrendingUp size={28} color="#93CB52" />
-            </div>
-            <h2 className="fw-bold fs-6 text-dark mb-1">Impulso+</h2>
-            <p className="text-muted small mb-2">Esse é o Flux, seu amigo de streak</p>
-            <span
-              className="fw-bold d-inline-block px-3 py-1 rounded-pill"
-              style={{ backgroundColor: 'rgba(28,151,112,0.1)', color: '#1c9770', fontSize: '13px' }}
-            >
-              {streakDias} dias
-            </span>
           </div>
         </section>
 

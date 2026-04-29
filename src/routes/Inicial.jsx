@@ -60,8 +60,8 @@ const Inicial = () => {
                   className="d-flex flex-column align-items-center gap-2 cursor-pointer"
                   onClick={() => navigate(path)}
                 >
-                  <div className={`icon-box-sm rounded-3 d-flex align-items-center justify-content-center ${bgClass}`}>
-                    <Icon size={22} color={iconColor} />
+                  <div className={`icon-box-md rounded-3 d-flex align-items-center justify-content-center ${bgClass}`}>
+                    <Icon size={30} color={iconColor} />
                   </div>
                   <span className="text-muted-custom fs-8 fw-medium text-center">{label}</span>
                 </div>
