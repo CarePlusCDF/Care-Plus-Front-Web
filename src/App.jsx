@@ -11,6 +11,7 @@ import Beneficios from './routes/Beneficios'
 import Mind from './routes/Mind'
 import Connect from './routes/Connect'
 import Scan from './routes/Scan'
+import Noticias from './routes/Noticias'
 
 
 
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/mind" element={<Mind />} />
         <Route path="/connect" element={<Connect />} />
         <Route path="/scan" element={<Scan />} />
+        <Route path="/noticias" element={<Noticias />} />
 
 
       </Routes>
