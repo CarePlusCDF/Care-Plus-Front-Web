@@ -31,33 +31,27 @@ const LGPD = () => {
   ]
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: '#F4F6F8' }}>
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar showPoints={false} />
 
-      <main className="container py-3 pb-5 mb-2">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-10">
 
-   
+        
         <section className="text-center mb-4">
-          <div
-            className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
-            style={{ width: '64px', height: '64px', backgroundColor: 'rgba(28,151,112,0.1)' }}
-          >
+          <div className="inline-flex items-center justify-center rounded-full w-16 h-16 bg-[rgba(28,151,112,0.1)] mb-3">
             <FiShield size={32} color="#1c9770" />
           </div>
-          <h1 className="fw-bold mb-1" style={{ fontSize: '22px', color: '#1A202C' }}>
+          <h1 className="font-bold text-[22px] text-[#1A202C] mb-1">
             Termo de Consentimento
           </h1>
-          <p className="text-secondary mb-0" style={{ fontSize: '14px' }}>
+          <p className="text-[#6B7685] text-[14px]">
             Na Care Plus levamos a sério o tratamento de dados dos nossos usuários.
           </p>
         </section>
 
-       
-        <section
-          className="rounded-3 p-3 mb-3"
-          style={{ backgroundColor: 'rgba(28,151,112,0.07)', border: '1px solid rgba(28,151,112,0.2)' }}
-        >
-          <p className="mb-0" style={{ fontSize: '14px', color: '#1A202C', lineHeight: '1.6' }}>
+        
+        <section className="rounded-xl p-3 mb-3 bg-[rgba(28,151,112,0.07)] border border-[rgba(28,151,112,0.2)]">
+          <p className="text-[14px] text-[#1A202C] leading-[1.6]">
             Para personalizar missões, acompanhar seu progresso e liberar recompensas,
             precisamos acessar algumas informações de saúde. Tudo é tratado com
             segurança, transparência e apenas para fins de bem-estar.
@@ -65,95 +59,76 @@ const LGPD = () => {
         </section>
 
       
-        <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
-          <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
-            O que coletamos
-          </h2>
-          <div className="d-flex flex-column gap-2">
-            {dataCollected.map((item, index) => (
-              <div key={index} className="d-flex align-items-center gap-2">
-                <div
-                  className="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
-                  style={{ width: '22px', height: '22px', backgroundColor: 'rgba(28,151,112,0.1)' }}
-                >
-                  <FiCheck size={12} color="#1c9770" />
-                </div>
-                <span style={{ fontSize: '13px', color: '#4A5568' }}>{item}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-3">
 
-    
-        <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
-          <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
-            Para que usamos
-          </h2>
-          <div className="d-flex flex-column gap-2">
-            {dataUsage.map((item, index) => (
-              <div key={index} className="d-flex align-items-center gap-2">
-                <div
-                  className="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
-                  style={{ width: '22px', height: '22px', backgroundColor: 'rgba(147,203,82,0.15)' }}
-                >
-                  <FiCheck size={12} color="#93CB52" />
+          
+          <section className="bg-white rounded-xl p-3 border border-[#E4E7EB]">
+            <h2 className="font-bold text-[15px] text-[#1A202C] mb-3">O que coletamos</h2>
+            <div className="flex flex-col gap-2">
+              {dataCollected.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="flex items-center justify-center rounded-full w-[22px] h-[22px] bg-[rgba(28,151,112,0.1)] shrink-0">
+                    <FiCheck size={12} color="#1c9770" />
+                  </div>
+                  <span className="text-[13px] text-[#4A5568]">{item}</span>
                 </div>
-                <span style={{ fontSize: '13px', color: '#4A5568' }}>{item}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
 
-      
-        <section className="bg-white rounded-3 p-3 mb-3" style={{ border: '1px solid #E4E7EB' }}>
-          <h2 className="fw-bold mb-3" style={{ fontSize: '15px', color: '#1A202C' }}>
-            Você decide
-          </h2>
-          <div className="d-flex flex-column gap-2">
-            {userControls.map((item, index) => (
-              <div key={index} className="d-flex align-items-center gap-2">
-                <div
-                  className="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
-                  style={{ width: '22px', height: '22px', backgroundColor: 'rgba(122,209,195,0.2)' }}
-                >
-                  <FiCheck size={12} color="#7AD1C3" />
+          
+          <section className="bg-white rounded-xl p-3 border border-[#E4E7EB]">
+            <h2 className="font-bold text-[15px] text-[#1A202C] mb-3">Para que usamos</h2>
+            <div className="flex flex-col gap-2">
+              {dataUsage.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="flex items-center justify-center rounded-full w-[22px] h-[22px] bg-[rgba(147,203,82,0.15)] shrink-0">
+                    <FiCheck size={12} color="#93CB52" />
+                  </div>
+                  <span className="text-[13px] text-[#4A5568]">{item}</span>
                 </div>
-                <span style={{ fontSize: '13px', color: '#4A5568' }}>{item}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
 
-    
+          
+          <section className="bg-white rounded-xl p-3 border border-[#E4E7EB]">
+            <h2 className="font-bold text-[15px] text-[#1A202C] mb-3">Você decide</h2>
+            <div className="flex flex-col gap-2">
+              {userControls.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="flex items-center justify-center rounded-full w-[22px] h-[22px] bg-[rgba(122,209,195,0.2)] shrink-0">
+                    <FiCheck size={12} color="#7AD1C3" />
+                  </div>
+                  <span className="text-[13px] text-[#4A5568]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+        </div>
+
+        
         <section className="text-center mb-4">
-          <span
-            className="d-inline-block px-3 py-1 rounded-pill fw-medium"
-            style={{ backgroundColor: 'rgba(28,151,112,0.1)', color: '#1c9770', fontSize: '13px' }}
-          >
+          <span className="inline-block px-3 py-1 rounded-full font-medium text-[13px] bg-[rgba(28,151,112,0.1)] text-[#1c9770]">
             Seus dados estão protegidos pela LGPD
           </span>
         </section>
 
-
-        <div className="row g-3">
-          <div className="col-12 col-sm-6">
-            <button
-              className="btn w-100 fw-bold rounded-3 py-3 d-flex align-items-center justify-content-center gap-2"
-              style={{ border: '2px solid #E4E7EB', backgroundColor: '#fff', color: '#6B7685', fontSize: '15px' }}
-              onClick={() => navigate('/')}
-            >
-              <FiX size={18} /> Discordo
-            </button>
-          </div>
-          <div className="col-12 col-sm-6">
-            <button
-              className="btn w-100 fw-bold rounded-3 py-3 d-flex align-items-center justify-content-center gap-2 text-white"
-              style={{ backgroundColor: '#1c9770', fontSize: '15px', boxShadow: '0 4px 12px rgba(28,151,112,0.3)' }}
-              onClick={() => navigate('/Onboarding')}
-            >
-              <FiCheck size={18} /> Concordo
-            </button>
-          </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:max-w-lg lg:mx-auto">
+          <button
+            className="w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-[15px] text-[#6B7685] bg-white border-2 border-[#E4E7EB] cursor-pointer"
+            onClick={() => navigate('/')}
+          >
+            <FiX size={18} /> Discordo
+          </button>
+          <button
+            className="w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-[15px] text-white bg-[#1c9770] shadow-[0_4px_12px_rgba(28,151,112,0.3)] cursor-pointer"
+            onClick={() => navigate('/Onboarding')}
+          >
+            <FiCheck size={18} /> Concordo
+          </button>
         </div>
 
       </main>

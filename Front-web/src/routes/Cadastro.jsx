@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { FiArrowRight, FiArrowLeft, FiUser, FiActivity } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 
+
+
 const Cadastro = () => {
   const navigate = useNavigate()
 

@@ -3,27 +3,25 @@ import { FiArrowRight, FiCreditCard, FiShield, FiHeart } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
 
-fetch("http://127.0.0.1:8000/")
-  .then((response) => response.json())
-  .then((data) => console.log(data))
 
 const Home = () => {
   const navigate = useNavigate()
   const user = { name: 'Renato', points: 0 }
+
   const quickAccessItems = [
     {
       id: 'blua',
       title: 'blua',
       subtitle: 'Saúde Digital',
       clickable: false,
-      bg: '#1a1a2e',
+      bg: 'bg-[#1a1a2e]',
     },
     {
       id: 'boostcare',
       title: 'Boost Care',
       subtitle: 'Missões & Recompensas',
       clickable: true,
-      bg: '#1c9770',
+      bg: 'bg-[#1c9770]',
       path: '/lgpd',
     },
   ]
@@ -35,122 +33,94 @@ const Home = () => {
   ]
 
   return (
-    <div className="min-vh-100" style={{ backgroundColor: '#F4F6F8' }}>
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar showPoints={false} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="mb-4">
-          <p className="mb-0 text-secondary small">Olá,</p>
-          <h1 className="fw-bold mb-0" style={{ fontSize: '28px', color: '#1A202C' }}>
+        {/* Saudação */}
+        <section className="mb-6">
+          <p className="text-[#6B7685] text-sm">Olá,</p>
+          <h1 className="font-bold text-[28px] text-[#1A202C] leading-tight">
             {user.name}!
           </h1>
         </section>
 
-        <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0" style={{ fontSize: '16px', color: '#1A202C' }}>
-              Acesso rápido
-            </h2>
-            <button className="btn btn-link p-0 text-decoration-none d-flex align-items-center gap-1"
-              style={{ fontSize: '13px', color: '#1c9770' }}>
+        
+        <section className="mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Acesso rápido</h2>
+            <button className="flex items-center gap-1 text-[13px] text-[#1c9770] bg-transparent border-0 p-0 cursor-pointer">
               Ver todos <FiArrowRight size={13} />
             </button>
           </div>
 
-          <div className="row g-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {quickAccessItems.map(({ id, title, subtitle, clickable, bg, path }) => (
-              <div key={id} className="col-6 col-md-4 col-lg-3">
-                <div
-                  className="rounded-3 p-3 d-flex flex-column justify-content-end position-relative h-100"
-                  style={{
-                    backgroundColor: bg,
-                    minHeight: '120px',
-                    cursor: clickable ? 'pointer' : 'default',
-                    transition: 'transform 0.2s, box-shadow 0.2s',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                  }}
-                  onClick={() => clickable && navigate(path)}
-                  onMouseEnter={e => { if (clickable) e.currentTarget.style.transform = 'translateY(-2px)' }}
-                  onMouseLeave={e => { if (clickable) e.currentTarget.style.transform = 'translateY(0)' }}
-                >
-                  <h3 className="fw-bold mb-0" style={{ fontSize: '16px', color: '#fff' }}>{title}</h3>
-                  <p className="mb-0" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>
-                  {clickable && (
-                    <FiArrowRight size={16} style={{ position: 'absolute', top: '14px', right: '14px', color: 'rgba(255,255,255,0.8)' }} />
-                  )}
-                </div>
+              <div
+                key={id}
+                className={[
+                  bg,
+                  'rounded-xl p-3 flex flex-col justify-end relative min-h-[120px] shadow-brand-tile',
+                  clickable
+                    ? 'cursor-pointer hover:-translate-y-0.5 transition-transform duration-200'
+                    : 'cursor-default',
+                ].join(' ')}
+                onClick={() => clickable && navigate(path)}
+              >
+                <h3 className="font-bold text-[16px] text-white">{title}</h3>
+                <p className="text-[12px] text-white/75">{subtitle}</p>
+                {clickable && (
+                  <FiArrowRight size={16} className="absolute top-3.5 right-3.5 text-white/80" />
+                )}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-4">
+        
+        <section className="mb-6">
           <div
-            className="rounded-3 p-4 position-relative overflow-hidden d-flex align-items-center justify-content-between"
-            style={{
-              background: 'linear-gradient(135deg, #1c9770 0%, #167a5a 100%)',
-              cursor: 'pointer',
-              boxShadow: '0 8px 24px rgba(28,151,112,0.3)',
-              transition: 'transform 0.2s',
-            }}
+            className="bg-gradient-primary rounded-xl p-4 lg:p-6 relative overflow-hidden flex items-center justify-between shadow-brand-banner cursor-pointer hover:-translate-y-0.5 transition-transform duration-200"
             onClick={() => navigate('/lgpd')}
-            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
           >
-            <div style={{
-              position: 'absolute', top: '-30px', right: '-30px',
-              width: '140px', height: '140px',
-              background: 'rgba(255,255,255,0.07)', borderRadius: '50%'
-            }} />
+            <div className="absolute -top-[30px] -right-[30px] w-[140px] h-[140px] bg-white/[0.07] rounded-full" />
 
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <span
-                className="d-inline-block fw-bold mb-2"
-                style={{
-                  backgroundColor: '#93CB52', color: '#1A202C',
-                  fontSize: '11px', padding: '3px 10px',
-                  borderRadius: '999px', letterSpacing: '0.5px',
-                  textTransform: 'uppercase'
-                }}
-              >
+            <div className="relative z-10">
+              <span className="inline-block font-bold text-[11px] bg-[#93CB52] text-[#1A202C] px-[10px] py-[3px] rounded-full tracking-[0.5px] uppercase mb-2">
                 Novo
               </span>
-              <h2 className="fw-bold text-white mb-1" style={{ fontSize: '20px' }}>Boost Care</h2>
-              <p className="mb-3" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)', lineHeight: '1.5' }}>
+              <h2 className="font-bold text-white text-[20px] mb-1">Boost Care</h2>
+              <p className="text-[13px] text-white/85 leading-[1.5] mb-3">
                 Transforme o cuidado com a saúde em hábito. Cumpra missões e ganhe recompensas reais!
               </p>
-              <div className="d-flex align-items-center gap-2 text-white fw-bold" style={{ fontSize: '13px' }}>
+              <div className="flex items-center gap-2 text-white font-bold text-[13px]">
                 Começar agora <FiArrowRight size={14} />
               </div>
             </div>
 
-            <span className="d-none d-sm-block" style={{ fontSize: '52px', opacity: '0.85', position: 'relative', zIndex: 1 }}>💚</span>
+            <span className="hidden lg:block text-[52px] opacity-85 relative z-10">💚</span>
           </div>
         </section>
 
+        
         <section>
-          <h2 className="fw-bold mb-3" style={{ fontSize: '16px', color: '#1A202C' }}>Serviços</h2>
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Serviços</h2>
 
-          <div className="row g-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
             {infoCards.map(({ id, title, desc, icon: Icon }) => (
-              <div key={id} className="col-12 col-md-6 col-lg-4">
-                <div
-                  className="d-flex align-items-center gap-3 bg-white rounded-3 p-3 h-100"
-                  style={{ border: '1px solid #E4E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
-                >
-                  <div
-                    className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-                    style={{ width: '48px', height: '48px', backgroundColor: '#F0F2F5' }}
-                  >
-                    <Icon size={22} color="#1c9770" />
-                  </div>
-                  <div className="flex-fill">
-                    <p className="fw-bold mb-0" style={{ fontSize: '14px', color: '#1A202C' }}>{title}</p>
-                    <p className="mb-0 text-secondary" style={{ fontSize: '12px' }}>{desc}</p>
-                  </div>
-                  <FiArrowRight size={18} color="#9BA3AE" />
+              <div
+                key={id}
+                className="flex items-center gap-3 bg-white rounded-xl p-3 border border-[#E4E7EB] shadow-brand-card"
+              >
+                <div className="flex items-center justify-center rounded-xl w-12 h-12 bg-[#F0F2F5] shrink-0">
+                  <Icon size={22} color="#1c9770" />
                 </div>
+                <div className="flex-1">
+                  <p className="font-bold text-[14px] text-[#1A202C]">{title}</p>
+                  <p className="text-[12px] text-[#6B7685]">{desc}</p>
+                </div>
+                <FiArrowRight size={18} color="#9BA3AE" />
               </div>
             ))}
           </div>

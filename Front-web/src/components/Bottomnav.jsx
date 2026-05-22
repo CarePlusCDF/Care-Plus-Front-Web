@@ -1,6 +1,5 @@
 import { FiHome, FiUsers, FiDollarSign, FiCheckSquare, FiMenu } from 'react-icons/fi'
 
-
 const BottomNav = ({ activePage = 'home' }) => {
 
   const navItems = [
@@ -12,15 +11,15 @@ const BottomNav = ({ activePage = 'home' }) => {
   ]
 
   return (
-    <nav className="d-flex justify-content-around align-items-center bg-white border-top py-2 fixed-bottom">
+    <nav className="flex justify-around items-center bg-white border-t border-brand-gray py-2 fixed bottom-0 left-0 right-0 z-50">
       {navItems.map(({ id, label, icon: Icon }) => (
         <div
           key={id}
-          className="d-flex flex-column align-items-center"
-          style={{ color: activePage === id ? '#1c9770' : '#9BA3AE', minWidth: '44px' }}
+          className="flex flex-col items-center min-w-[44px]"
+          style={{ color: activePage === id ? '#1c9770' : '#9BA3AE' }}
         >
           <Icon size={22} />
-          <span style={{ fontSize: '11px', marginTop: '2px' }}>{label}</span>
+          <span className="text-[11px] mt-[2px]">{label}</span>
         </div>
       ))}
     </nav>
