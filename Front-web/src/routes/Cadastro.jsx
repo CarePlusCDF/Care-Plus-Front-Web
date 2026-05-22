@@ -74,70 +74,68 @@ const Cadastro = () => {
     const selected = formData[field] === value
     return (
       <div
-        className={`rounded-3 p-3 mb-2 d-flex align-items-center gap-3 cursor-pointer ${selected ? 'ranking-item-highlight bg-primary-ultra-subtle' : 'bg-white border'}`}
+        className={`rounded-xl p-3 mb-2 flex items-center gap-3 cursor-pointer border-2 ${selected ? 'border-[#1c9770] bg-[rgba(28,151,112,0.05)]' : 'border-[#E4E7EB] bg-white'}`}
         onClick={() => handleChange(field, value)}
       >
         <div
-          className={`rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center ${selected ? 'bg-primary' : 'bg-white'}`}
-          style={{ width: '20px', height: '20px', border: `2px solid ${selected ? '#1c9770' : '#CDD3DA'}` }}
+          className={`rounded-full shrink-0 flex items-center justify-center w-5 h-5 border-2 ${selected ? 'bg-[#1c9770] border-[#1c9770]' : 'bg-white border-[#CDD3DA]'}`}
         >
-          {selected && <div className="rounded-circle bg-white" style={{ width: '8px', height: '8px' }} />}
+          {selected && <div className="rounded-full bg-white w-2 h-2" />}
         </div>
         <div>
-          <p className="fw-bold mb-0 fs-7 text-dark-custom">{label}</p>
-          <p className="mb-0 text-muted fs-9">{desc}</p>
+          <p className="font-bold text-[14px] text-[#1A202C]">{label}</p>
+          <p className="text-[12px] text-[#6B7685]">{desc}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar showPoints={false} />
 
-      <main className="container py-3 pb-5">
-        <div className="row justify-content-center">
-          <div className="col-12 col-md-8 col-lg-6">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-10">
+        <div className="flex justify-center">
+          <div className="w-full lg:max-w-lg">
 
             <section className="mb-4">
-              <div className="d-flex align-items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1">
                 <button
-                  className="btn btn-link p-0 text-decoration-none text-muted d-flex align-items-center"
+                  className="bg-transparent border-0 p-0 text-[#6B7685] flex items-center cursor-pointer"
                   onClick={() => step === 1 ? navigate('/onboarding') : setStep(1)}
                 >
                   <FiArrowLeft size={20} />
                 </button>
-                <p className="mb-0 text-muted fs-7">Passo {step} de 2</p>
+                <p className="text-[#6B7685] text-[14px]">Passo {step} de 2</p>
               </div>
-              <h1 className="fw-bold mb-1 fs-5 text-dark-custom">
+              <h1 className="font-bold text-[20px] text-[#1A202C] mb-1">
                 {step === 1 ? 'Suas medidas' : 'Seus hábitos'}
               </h1>
-              <p className="text-muted mb-0 fs-7">
+              <p className="text-[#6B7685] text-[14px]">
                 Essas informações geram missões personalizadas. Seus dados não serão compartilhados.
               </p>
             </section>
 
-            <div className="mb-4 rounded-pill overflow-hidden progress-h-md bg-body">
+            <div className="mb-4 rounded-full overflow-hidden h-2 bg-[#E4E7EB]">
               <div
-                className={`rounded-pill bg-primary progress-h-md ${step === 1 ? 'progress-50' : 'progress-100'}`}
-                style={{ transition: 'width 0.4s ease' }}
+                className={`rounded-full bg-[#1c9770] h-2 transition-[width] duration-[400ms] ease-out ${step === 1 ? 'w-1/2' : 'w-full'}`}
               />
             </div>
 
             {step === 1 && (
               <section>
-                <div className="d-flex align-items-center gap-3 rounded-3 p-3 mb-4 bg-primary-ultra-subtle border-primary-subtle">
+                <div className="flex items-center gap-3 rounded-xl p-3 mb-4 bg-[rgba(28,151,112,0.07)] border border-[rgba(28,151,112,0.2)]">
                   <FiUser size={20} color="#1c9770" />
-                  <p className="mb-0 fs-7 text-dark-custom">
+                  <p className="text-[14px] text-[#1A202C]">
                     As informações podem ser alteradas a qualquer momento na aba Perfil.
                   </p>
                 </div>
 
                 <div className="mb-3">
-                  <label className="fw-bold mb-2 d-block fs-7 text-dark-custom">Peso (kg)</label>
+                  <label className="font-bold mb-2 block text-[14px] text-[#1A202C]">Peso (kg)</label>
                   <input
                     type="number"
-                    className="form-control rounded-3 py-3 border"
+                    className="w-full rounded-xl py-3 px-3 border border-[#E4E7EB] text-[14px] text-[#1A202C] bg-white outline-none focus:border-[#1c9770]"
                     placeholder="Ex: 70"
                     value={formData.peso}
                     onChange={e => handleChange('peso', e.target.value)}
@@ -145,10 +143,10 @@ const Cadastro = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="fw-bold mb-2 d-block fs-7 text-dark-custom">Altura (cm)</label>
+                  <label className="font-bold mb-2 block text-[14px] text-[#1A202C]">Altura (cm)</label>
                   <input
                     type="number"
-                    className="form-control rounded-3 py-3 border"
+                    className="w-full rounded-xl py-3 px-3 border border-[#E4E7EB] text-[14px] text-[#1A202C] bg-white outline-none focus:border-[#1c9770]"
                     placeholder="Ex: 175"
                     value={formData.altura}
                     onChange={e => handleChange('altura', e.target.value)}
@@ -156,7 +154,7 @@ const Cadastro = () => {
                 </div>
 
                 <button
-                  className={`btn w-100 fw-bold rounded-3 py-3 d-flex align-items-center justify-content-center gap-2 text-white fs-7 ${isStep1Valid ? 'bg-primary shadow-primary' : 'bg-secondary'}`}
+                  className={`w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-white text-[14px] cursor-pointer ${isStep1Valid ? 'bg-[#1c9770] shadow-brand-primary' : 'bg-[#CDD3DA] cursor-not-allowed'}`}
                   onClick={() => isStep1Valid && handleAvancar()}
                   disabled={!isStep1Valid}
                 >
@@ -167,36 +165,36 @@ const Cadastro = () => {
 
             {step === 2 && (
               <section>
-                <div className="d-flex align-items-center gap-3 rounded-3 p-3 mb-4 bg-primary-ultra-subtle border-primary-subtle">
+                <div className="flex items-center gap-3 rounded-xl p-3 mb-4 bg-[rgba(28,151,112,0.07)] border border-[rgba(28,151,112,0.2)]">
                   <FiActivity size={20} color="#1c9770" />
-                  <p className="mb-0 fs-7 text-dark-custom">
+                  <p className="text-[14px] text-[#1A202C]">
                     Suas respostas ajudam a criar uma jornada de saúde personalizada para você.
                   </p>
                 </div>
 
                 <div className="mb-4">
-                  <h2 className="fw-bold mb-3 fs-7 text-dark-custom">Quão ativo você se considera?</h2>
+                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Quão ativo você se considera?</h2>
                   {nivelAtividadeOpcoes.map(({ value, label, desc }) => (
                     <RadioCard key={value} field="nivelAtividade" value={value} label={label} desc={desc} />
                   ))}
                 </div>
 
                 <div className="mb-4">
-                  <h2 className="fw-bold mb-3 fs-7 text-dark-custom">Como você avalia sua qualidade de sono?</h2>
+                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Como você avalia sua qualidade de sono?</h2>
                   {qualidadeSonoOpcoes.map(({ value, label, desc }) => (
                     <RadioCard key={value} field="qualidadeSono" value={value} label={label} desc={desc} />
                   ))}
                 </div>
 
                 <div className="mb-4">
-                  <h2 className="fw-bold mb-3 fs-7 text-dark-custom">Como está seu nível de energia no dia a dia?</h2>
+                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Como está seu nível de energia no dia a dia?</h2>
                   {nivelEnergiaOpcoes.map(({ value, label, desc }) => (
                     <RadioCard key={value} field="nivelEnergia" value={value} label={label} desc={desc} />
                   ))}
                 </div>
 
                 <button
-                  className={`btn w-100 fw-bold rounded-3 py-3 d-flex align-items-center justify-content-center gap-2 text-white fs-7 ${isStep2Valid ? 'bg-primary shadow-primary' : 'bg-secondary'}`}
+                  className={`w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-white text-[14px] cursor-pointer ${isStep2Valid ? 'bg-[#1c9770] shadow-brand-primary' : 'bg-[#CDD3DA] cursor-not-allowed'}`}
                   onClick={() => isStep2Valid && handleSubmit()}
                   disabled={!isStep2Valid}
                 >
