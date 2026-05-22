@@ -3,6 +3,10 @@ import { FiArrowRight, FiCreditCard, FiShield, FiHeart } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
 
+fetch("http://127.0.0.1:8000/")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+
 const Home = () => {
   const navigate = useNavigate()
   const user = { name: 'Renato', points: 0 }
