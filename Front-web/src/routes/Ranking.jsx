@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiAward } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Ranking = () => {
   const navigate = useNavigate()
@@ -21,82 +21,82 @@ const Ranking = () => {
     if (position === 1) return 'ranking-gold'
     if (position === 2) return 'ranking-silver'
     if (position === 3) return 'ranking-bronze'
-    return 'bg-primary-subtle-custom text-primary'
+    return 'bg-[rgba(28,151,112,0.1)] text-[#1c9770]'
   }
 
   const podium = rankingData.slice(0, 3)
-  const restante = rankingData.slice(3)
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="d-flex align-items-center gap-2 mb-4">
+        <section className="flex items-center gap-2 mb-4">
           <button
-            className="btn btn-link p-0 text-decoration-none text-muted"
+            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/missoes')}
           >
             <FiArrowLeft size={20} />
           </button>
-          <h1 className="fw-bold mb-0 fs-5 text-dark">Ranking Semanal</h1>
+          <h1 className="font-bold text-[20px] text-[#1A202C]">Ranking Semanal</h1>
         </section>
 
         <section className="mb-4">
-          <div className="rounded-3 p-4 text-center bg-gradient-primary shadow-primary">
-            <div className="avatar-lg rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center mx-auto mb-3">
+          <div className="rounded-xl p-4 text-center bg-gradient-primary shadow-brand-primary">
+            <div className="w-16 h-16 rounded-full bg-white/25 flex items-center justify-center mx-auto mb-3">
               <FiAward size={32} color="#fff" />
             </div>
-            <h2 className="fw-bold text-white fs-5 mb-1">Você está em 1° lugar!</h2>
-            <p className="text-white opacity-75 small mb-2">Parabéns, Renato!</p>
-            <span className="fw-bold d-inline-block px-3 py-1 rounded-pill bg-white text-primary fs-7">
+            <h2 className="font-bold text-white text-[20px] mb-1">Você está em 1° lugar!</h2>
+            <p className="text-white opacity-75 text-[13px] mb-2">Parabéns, Renato!</p>
+            <span className="font-bold inline-block px-3 py-1 rounded-full bg-white text-[#1c9770] text-[14px]">
               {points.toLocaleString('pt-BR')} pts
             </span>
           </div>
         </section>
 
         <section className="mb-4">
-          <div className="bg-white rounded-3 border p-3 d-flex align-items-center justify-content-between">
-            <p className="mb-0 small text-muted fw-medium">Tempo restante</p>
-            <span className="fw-bold text-primary fs-7">4 dias</span>
+          <div className="bg-white rounded-xl border border-[#E4E7EB] p-3 flex items-center justify-between">
+            <p className="text-[13px] text-[#6B7685] font-medium">Tempo restante</p>
+            <span className="font-bold text-[#1c9770] text-[14px]">4 dias</span>
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold mb-3 fs-6 text-dark">Pódio</h2>
-          <div className="row g-3 justify-content-center">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Pódio</h2>
+          <div className="grid grid-cols-3 gap-3 justify-center">
             {podium.map(({ id, nome, pontos, atual }) => (
-              <div key={id} className="col-4">
-                <div className={`rounded-3 p-3 text-center border ${atual ? 'ranking-item-highlight' : 'bg-white'}`}>
-                  <div className={`avatar-sm rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 fw-bold fs-7 ${getMedalClass(id)}`}>
-                    {id}°
-                  </div>
-                  <p className="fw-bold mb-0 fs-7 text-dark">{nome}</p>
-                  <p className="mb-0 text-primary fw-bold fs-8">
-                    {pontos.toLocaleString('pt-BR')} pts
-                  </p>
+              <div
+                key={id}
+                className={`rounded-xl p-3 text-center border ${atual ? 'ranking-item-highlight' : 'bg-white border-[#E4E7EB]'}`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-[14px] ${getMedalClass(id)}`}>
+                  {id}°
                 </div>
+                <p className="font-bold text-[14px] text-[#1A202C]">{nome}</p>
+                <p className="text-[#1c9770] font-bold text-[12px]">
+                  {pontos.toLocaleString('pt-BR')} pts
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold mb-3 fs-6 text-dark">Classificação</h2>
-          <div className="d-flex flex-column gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Classificação</h2>
+          <div className="flex flex-col gap-2">
             {rankingData.map(({ id, nome, pontos, atual }) => (
               <div
                 key={id}
-                className={`rounded-3 p-3 d-flex align-items-center gap-3 border ${atual ? 'ranking-item-highlight' : 'bg-white'}`}
+                className={`rounded-xl p-3 flex items-center gap-3 border ${atual ? 'ranking-item-highlight' : 'bg-white border-[#E4E7EB]'}`}
               >
-                <div className={`avatar-xs rounded-circle d-flex align-items-center justify-content-center fw-bold fs-8 flex-shrink-0 ${getMedalClass(id)}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-[12px] shrink-0 ${getMedalClass(id)}`}>
                   {id}°
                 </div>
-                <p className={`mb-0 fw-medium fs-7 flex-fill ${atual ? 'text-primary' : 'text-dark'}`}>
+                <p className={`font-medium text-[14px] flex-1 ${atual ? 'text-[#1c9770]' : 'text-[#1A202C]'}`}>
                   {nome} {atual && '(você)'}
                 </p>
-                <span className={`fw-bold fs-7 ${atual ? 'text-primary' : 'text-muted'}`}>
+                <span className={`font-bold text-[14px] ${atual ? 'text-[#1c9770]' : 'text-[#6B7685]'}`}>
                   {pontos.toLocaleString('pt-BR')} pts
                 </span>
               </div>
@@ -106,8 +106,7 @@ const Ranking = () => {
 
         <section>
           <button
-            className="btn w-100 rounded-3 py-3 fw-bold fs-7"
-            style={{ border: '2px solid #E4E7EB', backgroundColor: '#fff', color: '#6B7685' }}
+            className="w-full rounded-xl py-3 font-bold text-[14px] border-2 border-[#E4E7EB] bg-white text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/inicial')}
           >
             Sair do ranking
