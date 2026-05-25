@@ -5,7 +5,7 @@ import {
   FiHeart, FiWifi, FiFileText, FiUser
 } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Inicial = () => {
   const navigate = useNavigate()
@@ -25,46 +25,45 @@ const Inicial = () => {
   ]
 
   const beneficios = [
-    { id: 1, title: 'Cashback Nubank', points: 1500, bgClass: 'bg-primary-subtle-custom' },
-    { id: 2, title: 'Desconto iFood R$10', points: 800, bgClass: 'bg-accent2-subtle' },
-    { id: 3, title: 'Desconto Apple R$40', points: 2000, bgClass: 'bg-primary-subtle-custom' },
+    { id: 1, title: 'Cashback Nubank', points: 1500 },
+    { id: 2, title: 'Desconto iFood R$10', points: 800 },
+    { id: 3, title: 'Desconto Apple R$40', points: 2000 },
   ]
 
   const quickMenuItems = [
-    { id: 'missoes', label: 'Missões', icon: FiTarget, path: '/missoes', iconColor: '#1c9770', bgClass: 'bg-primary-subtle-custom' },
-    { id: 'mind', label: 'Mind+', icon: FiHeart, path: '/mind', iconColor: '#7AD180', bgClass: 'bg-accent2-subtle' },
-    { id: 'connect', label: 'Connect+', icon: FiWifi, path: '/connect', iconColor: '#7AD1C3', bgClass: 'bg-accent2-subtle' },
-    { id: 'noticias', label: 'Notícias', icon: FiFileText, path: '/noticias', iconColor: '#93CB52', bgClass: 'bg-primary-subtle-custom' },
-    { id: 'perfil', label: 'Perfil', icon: FiUser, path: '/perfil', iconColor: '#1c9770', bgClass: 'bg-primary-subtle-custom' },
+    { id: 'missoes', label: 'Missões', icon: FiTarget, path: '/missoes', iconColor: '#1c9770', bgColor: 'bg-[rgba(28,151,112,0.1)]' },
+    { id: 'mind', label: 'Mind+', icon: FiHeart, path: '/mind', iconColor: '#7AD180', bgColor: 'bg-[rgba(122,209,128,0.15)]' },
+    { id: 'connect', label: 'Connect+', icon: FiWifi, path: '/connect', iconColor: '#7AD1C3', bgColor: 'bg-[rgba(122,209,195,0.15)]' },
+    { id: 'noticias', label: 'Notícias', icon: FiFileText, path: '/noticias', iconColor: '#93CB52', bgColor: 'bg-[rgba(147,203,82,0.15)]' },
+    { id: 'perfil', label: 'Perfil', icon: FiUser, path: '/perfil', iconColor: '#1c9770', bgColor: 'bg-[rgba(28,151,112,0.1)]' },
   ]
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
         <section className="mb-4">
-          <p className="mb-0 text-muted small">Olá,</p>
-          <h1 className="fw-bold mb-0 fs-4 text-dark-custom">Renato!</h1>
-          <p className="mb-0 mt-1 text-muted-custom fs-7">
+          <p className="text-[#6B7685] text-sm">Olá,</p>
+          <h1 className="font-bold text-[24px] text-[#1A202C]">Renato!</h1>
+          <p className="mt-1 text-[#6B7685] text-[14px]">
             Continue sua jornada de bem-estar hoje.
           </p>
         </section>
 
         <section className="mb-4">
-          <div className="row g-3 justify-content-center">
-            {quickMenuItems.map(({ id, label, icon: Icon, path, iconColor, bgClass }) => (
-              <div key={id} className="col">
-                <div
-                  className="d-flex flex-column align-items-center gap-2 cursor-pointer"
-                  onClick={() => navigate(path)}
-                >
-                  <div className={`icon-box-md rounded-3 d-flex align-items-center justify-content-center ${bgClass}`}>
-                    <Icon size={30} color={iconColor} />
-                  </div>
-                  <span className="text-muted-custom fs-8 fw-medium text-center">{label}</span>
+          <div className="grid grid-cols-5 gap-3 justify-center">
+            {quickMenuItems.map(({ id, label, icon: Icon, path, iconColor, bgColor }) => (
+              <div
+                key={id}
+                className="flex flex-col items-center gap-2 cursor-pointer"
+                onClick={() => navigate(path)}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${bgColor}`}>
+                  <Icon size={30} color={iconColor} />
                 </div>
+                <span className="text-[#6B7685] text-[12px] font-medium text-center">{label}</span>
               </div>
             ))}
           </div>
@@ -72,77 +71,75 @@ const Inicial = () => {
 
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-primary shadow-primary cursor-pointer"
+            className="rounded-xl p-3 flex items-center justify-between bg-gradient-primary shadow-brand-primary cursor-pointer"
             onClick={() => navigate('/scan')}
           >
             <div>
-              <p className="fw-bold text-white mb-0 fs-7">Scan Diário</p>
-              <p className="mb-0 text-white opacity-75 fs-8">
+              <p className="font-bold text-white text-[14px]">Scan Diário</p>
+              <p className="text-white opacity-75 text-[12px]">
                 Realize o scan e ganhe uma caixa surpresa
               </p>
             </div>
-            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
+            <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/25">
               <FiArrowRight size={20} color="#fff" />
             </div>
           </div>
         </section>
 
         <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Missões ativas</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Missões ativas</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
+              className="flex items-center gap-1 text-[13px] text-[#1c9770] bg-transparent border-0 p-0 cursor-pointer"
               onClick={() => navigate('/missoes')}
             >
               Ver mais <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
 
-          <div className="d-flex flex-column gap-2">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
             {missoesAtivas.map(({ id, title, progress, icon: Icon }) => (
               <div
                 key={id}
-                className="bg-white rounded-3 p-3 d-flex align-items-center gap-3 border shadow-card"
+                className="bg-white rounded-xl p-3 flex items-center gap-3 border border-[#E4E7EB] shadow-brand-card"
               >
-                <div className="icon-box-sm rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 bg-primary-subtle-custom">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-[rgba(28,151,112,0.1)]">
                   <Icon size={18} color="#1c9770" />
                 </div>
-                <div className="flex-fill">
-                  <p className="fw-medium mb-1 fs-7 text-dark-custom">{title}</p>
-                  <div className="progress rounded-pill progress-h-sm">
+                <div className="flex-1">
+                  <p className="font-medium text-[14px] text-[#1A202C] mb-1">{title}</p>
+                  <div className="rounded-full bg-[#E4E7EB] h-1.5 overflow-hidden">
                     <div
-                      className={`progress-bar rounded-pill ${progress === 100 ? 'bg-success' : 'bg-primary'}`}
+                      className={`rounded-full h-1.5 ${progress === 100 ? 'bg-[#93CB52]' : 'bg-[#1c9770]'}`}
                       style={{ width: `${progress}%` }}
                     />
                   </div>
                 </div>
-                <span className="fw-bold text-primary flex-shrink-0 fs-9">{progress}%</span>
+                <span className="font-bold text-[#1c9770] shrink-0 text-[12px]">{progress}%</span>
               </div>
             ))}
           </div>
         </section>
 
         <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Benefícios</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Benefícios</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
+              className="flex items-center gap-1 text-[13px] text-[#1c9770] bg-transparent border-0 p-0 cursor-pointer"
               onClick={() => navigate('/beneficios')}
             >
               Ver todos <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
 
-          <div className="row g-3">
-            {beneficios.map(({ id, title, points: pts, bgClass }) => (
-              <div key={id} className="col-12 col-md-4">
-                <div className="bg-white rounded-3 p-3 border shadow-card h-100">
-                  <div className={`icon-box-xs rounded-3 mb-2 ${bgClass}`} />
-                  <p className="fw-bold mb-1 fs-7 text-dark-custom">{title}</p>
-                  <p className="mb-0 fw-bold text-primary fs-9">
-                    {pts.toLocaleString('pt-BR')} pts
-                  </p>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            {beneficios.map(({ id, title, points: pts }) => (
+              <div key={id} className="bg-white rounded-xl p-3 border border-[#E4E7EB] shadow-brand-card">
+                <div className="w-9 h-9 rounded-xl mb-2 bg-[rgba(28,151,112,0.1)]" />
+                <p className="font-bold text-[14px] text-[#1A202C] mb-1">{title}</p>
+                <p className="font-bold text-[#1c9770] text-[12px]">
+                  {pts.toLocaleString('pt-BR')} pts
+                </p>
               </div>
             ))}
           </div>
@@ -150,16 +147,16 @@ const Inicial = () => {
 
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent1 shadow-primary cursor-pointer"
+            className="rounded-xl p-3 flex items-center justify-between bg-gradient-accent1 shadow-brand-primary cursor-pointer"
             onClick={() => navigate('/mind')}
           >
             <div>
-              <p className="fw-bold text-white mb-0 fs-7">Mind+</p>
-              <p className="mb-0 text-white opacity-75 fs-9">
+              <p className="font-bold text-white text-[14px]">Mind+</p>
+              <p className="text-white opacity-75 text-[12px]">
                 Apoio psicológico a qualquer hora e lugar
               </p>
             </div>
-            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
+            <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/25">
               <FiHeart size={20} color="#fff" />
             </div>
           </div>
@@ -167,26 +164,26 @@ const Inicial = () => {
 
         <section className="mb-4">
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-accent2 shadow-primary cursor-pointer"
+            className="rounded-xl p-3 flex items-center justify-between bg-gradient-accent2 shadow-brand-primary cursor-pointer"
             onClick={() => navigate('/connect')}
           >
             <div>
-              <p className="fw-bold text-white mb-0 fs-7">Connect+</p>
-              <p className="mb-0 text-white opacity-75 fs-9">
+              <p className="font-bold text-white text-[14px]">Connect+</p>
+              <p className="text-white opacity-75 text-[12px]">
                 Sono, batimentos e metas num só lugar
               </p>
             </div>
-            <div className="w-44 h-44 d-flex align-items-center justify-content-center rounded-3 bg-white bg-opacity-25">
+            <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/25">
               <FiWifi size={20} color="#fff" />
             </div>
           </div>
         </section>
 
         <section>
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0 fs-6 text-dark-custom">Notícias</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Notícias</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
+              className="flex items-center gap-1 text-[13px] text-[#1c9770] bg-transparent border-0 p-0 cursor-pointer"
               onClick={() => navigate('/noticias')}
             >
               Ver mais <FiArrowRight size={13} color="#1c9770" />
@@ -194,16 +191,16 @@ const Inicial = () => {
           </div>
 
           <div
-            className="bg-white rounded-3 p-3 border shadow-card cursor-pointer"
+            className="bg-white rounded-xl p-3 border border-[#E4E7EB] shadow-brand-card cursor-pointer"
             onClick={() => navigate('/noticias')}
           >
-            <p className="fw-bold mb-1 fs-7 text-dark-custom">
+            <p className="font-bold text-[14px] text-[#1A202C] mb-1">
               Saúde mental: afastamentos dobram em dez anos e chegam a 440 mil
             </p>
-            <p className="text-muted mb-2 fs-9">
+            <p className="text-[#6B7685] text-[12px] mb-2">
               Em 2014, quase 203 mil brasileiros foram afastados do trabalho em razão de episódios depressivos e transtornos de ansiedade.
             </p>
-            <span className="text-primary fw-bold fs-9">Ver matéria completa</span>
+            <span className="text-[#1c9770] font-bold text-[12px]">Ver matéria completa</span>
           </div>
         </section>
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiArrowRight, FiZap, FiTarget, FiStar, FiHeart, FiDroplet, FiSun, FiTrendingUp, FiInfo } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Missoes = () => {
   const navigate = useNavigate()
@@ -39,61 +39,59 @@ const Missoes = () => {
     { id: 6, desbloqueada: false, concluida: false },
   ]
 
+  const getCircleClass = (concluida, desbloqueada) => {
+    if (concluida) return 'bg-[#1c9770] text-white border-2 border-transparent'
+    if (desbloqueada) return 'bg-[rgba(28,151,112,0.15)] text-[#1c9770] border-2 border-[#1c9770]'
+    return 'bg-[#E4E7EB] text-[#9BA3AE] border-2 border-transparent'
+  }
+
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="d-flex align-items-center gap-2 mb-4">
+        <section className="flex items-center gap-2 mb-4">
           <button
-            className="btn btn-link p-0 text-decoration-none"
-            style={{ color: '#6B7685' }}
+            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/inicial')}
           >
             <FiArrowLeft size={20} />
           </button>
-          <h1 className="fw-bold mb-0 fs-5 text-dark">Missões</h1>
+          <h1 className="font-bold text-[20px] text-[#1A202C]">Missões</h1>
         </section>
 
         <section>
           <div
-            className="bg-white rounded-3 border-primary-subtle p-4 text-center mb-4"
-            role="button"
+            className="bg-white rounded-xl border border-[rgba(28,151,112,0.2)] p-4 text-center mb-4 cursor-pointer"
             onClick={() => navigate('/impulso')}
           >
-            <div
-              className="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
-              style={{ width: '64px', height: '64px', backgroundColor: 'rgba(147,203,82,0.15)' }}
-            >
+            <div className="rounded-full flex items-center justify-center mx-auto mb-3 w-16 h-16 bg-[rgba(147,203,82,0.15)]">
               <FiTrendingUp size={28} color="#93CB52" />
             </div>
-            <h2 className="fw-bold fs-6 text-dark mb-1">Impulso+</h2>
-            <p className="text-muted small mb-2">Esse é o Flux, seu amigo de streak</p>
-            <span
-              className="fw-bold d-inline-block px-3 py-1 rounded-pill"
-              style={{ backgroundColor: 'rgba(28,151,112,0.1)', color: '#1c9770', fontSize: '13px' }}
-            >
+            <h2 className="font-bold text-[16px] text-[#1A202C] mb-1">Impulso+</h2>
+            <p className="text-[#6B7685] text-[13px] mb-2">Esse é o Flux, seu amigo de streak</p>
+            <span className="font-bold inline-block px-3 py-1 rounded-full bg-[rgba(28,151,112,0.1)] text-[#1c9770] text-[13px]">
               {streakDias} dias
             </span>
           </div>
         </section>
 
         <section className="mb-4 mt-4">
-          <div className="bg-white rounded-3 border p-3">
-            <div className="d-flex justify-content-between align-items-start mb-2">
+          <div className="bg-white rounded-xl border border-[#E4E7EB] p-3">
+            <div className="flex justify-between items-start mb-2">
               <div>
-                <span className="small text-muted fw-medium">Desafio atual</span>
-                <h2 className="fw-bold mb-0 fs-6 text-dark mt-1">{desafioAtual.title}</h2>
+                <span className="text-[12px] text-[#6B7685] font-medium">Desafio atual</span>
+                <h2 className="font-bold text-[16px] text-[#1A202C] mt-1">{desafioAtual.title}</h2>
               </div>
-              <span className="fw-bold small text-primary">{desafioAtual.progress}%</span>
+              <span className="font-bold text-[13px] text-[#1c9770]">{desafioAtual.progress}%</span>
             </div>
-            <div className="d-flex align-items-center gap-2 mb-2">
-              <span className="small text-muted">{desafioAtual.atual} / {desafioAtual.meta}</span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[12px] text-[#6B7685]">{desafioAtual.atual} / {desafioAtual.meta}</span>
             </div>
-            <div className="progress rounded-pill" style={{ height: '6px' }}>
+            <div className="rounded-full bg-[#E4E7EB] h-1.5 overflow-hidden">
               <div
-                className="progress-bar bg-primary rounded-pill"
+                className="bg-[#1c9770] rounded-full h-1.5"
                 style={{ width: `${desafioAtual.progress}%` }}
               />
             </div>
@@ -101,71 +99,50 @@ const Missoes = () => {
         </section>
 
         <section className="mb-4">
-          <div className="bg-white rounded-3 border p-3">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <h2 className="fw-bold mb-0 fs-6 text-dark">Mapa de missões</h2>
-              <div className="d-flex align-items-center gap-1 px-2 py-1 rounded-pill"
-                style={{ backgroundColor: 'rgba(28,151,112,0.1)' }}>
+          <div className="bg-white rounded-xl border border-[#E4E7EB] p-3">
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="font-bold text-[16px] text-[#1A202C]">Mapa de missões</h2>
+              <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-[rgba(28,151,112,0.1)]">
                 <FiZap size={14} color="#1c9770" />
-                <span className="fw-bold small text-primary">{streakDias} dias de streak</span>
+                <span className="font-bold text-[12px] text-[#1c9770]">{streakDias} dias de streak</span>
               </div>
             </div>
 
-            <div className="d-flex align-items-center justify-content-center gap-2 flex-wrap">
+            <div className="flex items-center justify-center gap-2 flex-wrap">
               {mapaMissoes.map(({ id, desbloqueada, concluida }) => (
-                <div key={id} className="d-flex flex-column align-items-center gap-1">
+                <div key={id} className="flex flex-col items-center gap-1">
                   <div
-                    className="rounded-circle d-flex align-items-center justify-content-center fw-bold"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      backgroundColor: concluida
-                        ? '#1c9770'
-                        : desbloqueada
-                          ? 'rgba(28,151,112,0.15)'
-                          : '#E4E7EB',
-                      color: concluida ? '#fff' : desbloqueada ? '#1c9770' : '#9BA3AE',
-                      fontSize: '13px',
-                      border: desbloqueada && !concluida ? '2px solid #1c9770' : '2px solid transparent',
-                    }}
+                    className={`rounded-full flex items-center justify-center font-bold w-10 h-10 text-[13px] ${getCircleClass(concluida, desbloqueada)}`}
                   >
                     {id}
                   </div>
                   {id < mapaMissoes.length && (
-                    <div style={{ width: '2px', height: '16px', backgroundColor: concluida ? '#1c9770' : '#E4E7EB' }} />
+                    <div className={`w-0.5 h-4 ${concluida ? 'bg-[#1c9770]' : 'bg-[#E4E7EB]'}`} />
                   )}
                 </div>
               ))}
             </div>
 
-            <p className="text-muted small text-center mt-3 mb-0">
+            <p className="text-[#6B7685] text-[12px] text-center mt-3">
               Acesse o app diariamente para liberar o Impulso+ e receber recompensas
             </p>
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold mb-3 fs-6 text-dark">Missões Connect+</h2>
-          <div className="d-flex flex-column gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Missões Connect+</h2>
+          <div className="flex flex-col gap-2">
             {missoesConect.map(({ id, title, icon: Icon, concluida }) => (
               <div
                 key={id}
-                className="bg-white rounded-3 border p-3 d-flex align-items-center gap-3"
+                className="bg-white rounded-xl border border-[#E4E7EB] p-3 flex items-center gap-3"
               >
-                <div
-                  className="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
-                  style={{ width: '40px', height: '40px', backgroundColor: 'rgba(122,209,195,0.15)' }}
-                >
+                <div className="rounded-xl flex items-center justify-center shrink-0 w-10 h-10 bg-[rgba(122,209,195,0.15)]">
                   <Icon size={18} color="#7AD1C3" />
                 </div>
-                <p className="mb-0 small text-dark flex-fill">{title}</p>
+                <p className="text-[13px] text-[#1A202C] flex-1">{title}</p>
                 <div
-                  className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-                  style={{
-                    width: '22px', height: '22px',
-                    backgroundColor: concluida ? '#1c9770' : 'transparent',
-                    border: `2px solid ${concluida ? '#1c9770' : '#CDD3DA'}`,
-                  }}
+                  className={`rounded-full flex items-center justify-center shrink-0 w-[22px] h-[22px] border-2 ${concluida ? 'bg-[#1c9770] border-[#1c9770]' : 'bg-transparent border-[#CDD3DA]'}`}
                 >
                   {concluida && <FiArrowRight size={10} color="#fff" />}
                 </div>
@@ -175,27 +152,19 @@ const Missoes = () => {
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold mb-3 fs-6 text-dark">Missões personalizadas</h2>
-          <div className="d-flex flex-column gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Missões personalizadas</h2>
+          <div className="flex flex-col gap-2">
             {missoesPersonalizadas.map(({ id, title, icon: Icon, concluida }) => (
               <div
                 key={id}
-                className="bg-white rounded-3 border p-3 d-flex align-items-center gap-3"
+                className="bg-white rounded-xl border border-[#E4E7EB] p-3 flex items-center gap-3"
               >
-                <div
-                  className="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
-                  style={{ width: '40px', height: '40px', backgroundColor: 'rgba(28,151,112,0.08)' }}
-                >
+                <div className="rounded-xl flex items-center justify-center shrink-0 w-10 h-10 bg-[rgba(28,151,112,0.08)]">
                   <Icon size={18} color="#1c9770" />
                 </div>
-                <p className="mb-0 small text-dark flex-fill">{title}</p>
+                <p className="text-[13px] text-[#1A202C] flex-1">{title}</p>
                 <div
-                  className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-                  style={{
-                    width: '22px', height: '22px',
-                    backgroundColor: concluida ? '#93CB52' : 'transparent',
-                    border: `2px solid ${concluida ? '#93CB52' : '#CDD3DA'}`,
-                  }}
+                  className={`rounded-full flex items-center justify-center shrink-0 w-[22px] h-[22px] border-2 ${concluida ? 'bg-[#93CB52] border-[#93CB52]' : 'bg-transparent border-[#CDD3DA]'}`}
                 >
                   {concluida && <FiArrowRight size={10} color="#fff" />}
                 </div>
@@ -205,10 +174,10 @@ const Missoes = () => {
         </section>
 
         <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold mb-0 fs-6 text-dark">Desafio semanal</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Desafio semanal</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary small d-flex align-items-center gap-1"
+              className="bg-transparent border-0 p-0 flex items-center gap-1 cursor-pointer"
               onClick={() => setExpandedDesafio(!expandedDesafio)}
             >
               <FiInfo size={14} color="#1c9770" />
@@ -216,21 +185,19 @@ const Missoes = () => {
           </div>
 
           {expandedDesafio && (
-            <div className="rounded-3 p-3 mb-3 small"
-              style={{ backgroundColor: 'rgba(28,151,112,0.07)', border: '1px solid rgba(28,151,112,0.2)', color: '#1A202C' }}>
+            <div className="rounded-xl p-3 mb-3 text-[13px] bg-[rgba(28,151,112,0.07)] border border-[rgba(28,151,112,0.2)] text-[#1A202C]">
               Os desafios semanais são lançados toda segunda-feira para o público do aplicativo.
               Quem completar o desafio mais rápido receberá uma caixa surpresa única.
             </div>
           )}
 
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between bg-gradient-primary shadow-primary"
-            role="button"
+            className="rounded-xl p-3 flex items-center justify-between bg-gradient-primary shadow-brand-primary cursor-pointer"
             onClick={() => navigate('/ranking')}
           >
             <div>
-              <p className="fw-bold text-white mb-0 small">Ver Ranking Semanal</p>
-              <p className="mb-0 text-white opacity-75" style={{ fontSize: '12px' }}>
+              <p className="font-bold text-white text-[13px]">Ver Ranking Semanal</p>
+              <p className="text-white opacity-75 text-[12px]">
                 Você está no grupo dos 40% melhores
               </p>
             </div>
