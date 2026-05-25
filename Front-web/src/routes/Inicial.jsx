@@ -6,6 +6,8 @@ import {
 } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
+import mockupMobile from '../assets/mucupe.png'
+import mockupDesktop from '../assets/mucupePC.png'
 
 const Inicial = () => {
   const navigate = useNavigate()
@@ -42,15 +44,20 @@ const Inicial = () => {
     <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
+      <div className="relative w-full">
+        <img src={mockupMobile} alt="" className="w-full block lg:hidden" />
+        <img src={mockupDesktop} alt="" className="w-full hidden lg:block" />
 
-        <section className="mb-4">
-          <p className="text-[#6B7685] text-sm">Olá,</p>
-          <h1 className="font-bold text-[24px] text-[#1A202C]">Renato!</h1>
-          <p className="mt-1 text-[#6B7685] text-[14px]">
+        <div className="absolute bottom-[10%] left-4 lg:left-8 z-10">
+          <p className="text-white text-sm md:text-[23px] leading-none mb-1">Olá,</p>
+          <h1 className="font-bold text-[20px] md:text-[29px] lg:text-[32px] text-white leading-none">Renato!</h1>
+          <p className="text-white text-[15px] md:text-[21px] lg:text-[25px] mt-1 leading-tight">
             Continue sua jornada de bem-estar hoje.
           </p>
-        </section>
+        </div>
+      </div>
+
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
         <section className="mb-4">
           <div className="grid grid-cols-5 gap-3 justify-center">
