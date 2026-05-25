@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiArrowRight, FiLock } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Beneficios = () => {
   const navigate = useNavigate()
@@ -23,63 +23,63 @@ const Beneficios = () => {
   ]
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="d-flex align-items-center gap-2 mb-4">
+        <section className="flex items-center gap-2 mb-4">
           <button
-            className="btn btn-link p-0 text-decoration-none text-muted"
+            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/inicial')}
           >
             <FiArrowLeft size={20} />
           </button>
-          <h1 className="fw-bold mb-0 fs-5 text-dark-custom">Benefícios</h1>
+          <h1 className="font-bold text-[20px] text-[#1A202C]">Benefícios</h1>
         </section>
 
         <section className="mb-4">
-          <div className="bg-gradient-primary shadow-primary rounded-3 p-4">
-            <div className="d-flex justify-content-between align-items-start">
+          <div className="bg-gradient-primary shadow-brand-primary rounded-xl p-4">
+            <div className="flex justify-between items-start">
               <div>
-                <p className="text-white opacity-75 small mb-1">Sua categoria</p>
-                <h2 className="fw-bold text-white fs-4 mb-1">{categoria}</h2>
-                <p className="text-white opacity-75 fs-9 mb-0">
+                <p className="text-white opacity-75 text-[13px] mb-1">Sua categoria</p>
+                <h2 className="font-bold text-white text-[24px] mb-1">{categoria}</h2>
+                <p className="text-white opacity-75 text-[12px]">
                   Próxima categoria: {proximaCategoria}
                 </p>
               </div>
-              <div className="bg-white bg-opacity-25 rounded-3 px-3 py-2">
-                <span className="fw-bold text-white fs-7">
+              <div className="bg-white/25 rounded-xl px-3 py-2">
+                <span className="font-bold text-white text-[14px]">
                   {points.toLocaleString('pt-BR')} pts
                 </span>
               </div>
             </div>
             <div className="mt-3">
-              <div className="d-flex justify-content-between mb-1">
-                <span className="text-white opacity-75 fs-9">Progresso para Prata</span>
-                <span className="text-white fw-bold fs-9">60%</span>
+              <div className="flex justify-between mb-1">
+                <span className="text-white opacity-75 text-[12px]">Progresso para Prata</span>
+                <span className="text-white font-bold text-[12px]">60%</span>
               </div>
-              <div className="progress rounded-pill progress-h-sm">
-                <div className="progress-bar bg-white rounded-pill progress-60" />
+              <div className="rounded-full bg-white/25 h-1.5 overflow-hidden">
+                <div className="bg-white rounded-full h-1.5 w-[60%]" />
               </div>
             </div>
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold fs-6 text-dark-custom mb-3">Benefícios ativos</h2>
-          <div className="d-flex flex-column gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Benefícios ativos</h2>
+          <div className="flex flex-col gap-2">
             {beneficiosAtivos.map(({ id, title, parceiro, ativo }) => (
-              <div key={id} className="bg-white rounded-3 border shadow-card p-3 d-flex align-items-center gap-3">
-                <div className="icon-box-sm rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 bg-primary-subtle-custom">
+              <div key={id} className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-[rgba(28,151,112,0.1)]">
                   <FiArrowRight size={18} color="#1c9770" />
                 </div>
-                <div className="flex-fill">
-                  <p className="fw-bold mb-0 fs-7 text-dark-custom">{title}</p>
-                  <p className="mb-0 text-muted fs-9">{parceiro}</p>
+                <div className="flex-1">
+                  <p className="font-bold text-[14px] text-[#1A202C]">{title}</p>
+                  <p className="text-[#6B7685] text-[12px]">{parceiro}</p>
                 </div>
                 {ativo && (
-                  <span className="badge rounded-pill fs-9 bg-primary">Ativo</span>
+                  <span className="rounded-full text-[11px] text-white bg-[#1c9770] px-2 py-0.5 font-medium">Ativo</span>
                 )}
               </div>
             ))}
@@ -87,30 +87,26 @@ const Beneficios = () => {
         </section>
 
         <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold fs-6 text-dark-custom mb-0">Disponíveis no nível {categoria}</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Disponíveis no nível {categoria}</h2>
           </div>
-          <div className="row g-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             {beneficiosDisponiveis.map(({ id, title, parceiro, bloqueado }) => (
-              <div key={id} className="col-12 col-md-6">
-                <div className={`bg-white rounded-3 border shadow-card p-3 h-100 ${bloqueado ? 'opacity-50' : ''}`}>
-                  <div className="d-flex align-items-center justify-content-between mb-2">
-                    <span className="fw-bold fs-7 text-dark-custom">{parceiro}</span>
-                    {bloqueado && <FiLock size={14} color="#9BA3AE" />}
-                  </div>
-                  <p className="mb-0 text-muted fs-9">{title}</p>
-                  {bloqueado && (
-                    <p className="mb-0 text-primary fs-9 fw-medium mt-1">
-                      Complete missões para desbloquear
-                    </p>
-                  )}
+              <div key={id} className={`bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 ${bloqueado ? 'opacity-50' : ''}`}>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-bold text-[14px] text-[#1A202C]">{parceiro}</span>
+                  {bloqueado && <FiLock size={14} color="#9BA3AE" />}
                 </div>
+                <p className="text-[#6B7685] text-[12px]">{title}</p>
+                {bloqueado && (
+                  <p className="text-[#1c9770] text-[12px] font-medium mt-1">
+                    Complete missões para desbloquear
+                  </p>
+                )}
               </div>
             ))}
           </div>
         </section>
-
-        
 
       </main>
 
