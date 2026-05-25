@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiArrowRight, FiHeart, FiPhone } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Mind = () => {
   const navigate = useNavigate()
@@ -14,92 +14,87 @@ const Mind = () => {
   ]
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="d-flex align-items-center gap-2 mb-4">
+        <section className="flex items-center gap-2 mb-4">
           <button
-            className="btn btn-link p-0 text-decoration-none text-muted"
+            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/inicial')}
           >
             <FiArrowLeft size={20} />
           </button>
-          <h1 className="fw-bold mb-0 fs-5 text-dark-custom">Mind+</h1>
+          <h1 className="font-bold text-[20px] text-[#1A202C]">Mind+</h1>
         </section>
 
         <section className="mb-4">
-          <div className="bg-gradient-accent1 shadow-primary rounded-3 p-4 text-center">
-            <div className="avatar-lg rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center mx-auto mb-3">
+          <div className="bg-gradient-accent1 shadow-brand-primary rounded-xl p-4 text-center">
+            <div className="w-16 h-16 rounded-full bg-white/25 flex items-center justify-center mx-auto mb-3">
               <FiHeart size={32} color="#fff" />
             </div>
-            <h2 className="fw-bold text-white fs-5 mb-1">Pedir ajuda não é sinal de fraqueza</h2>
-            <p className="text-white opacity-75 small mb-0">
+            <h2 className="font-bold text-white text-[20px] mb-1">Pedir ajuda não é sinal de fraqueza</h2>
+            <p className="text-white opacity-75 text-[13px]">
               É a coragem de escolher cuidar de si.
             </p>
           </div>
         </section>
 
         <section className="mb-4">
-          <div className="row g-3">
-            <div className="col-12 col-md-6">
-              <div
-                className="bg-white rounded-3 border shadow-card p-3 h-100 cursor-pointer"
-                onClick={() => {}}
-              >
-                <div className="icon-box-sm rounded-3 d-flex align-items-center justify-content-center bg-primary-subtle-custom mb-2">
-                  <FiHeart size={18} color="#1c9770" />
-                </div>
-                <p className="fw-bold fs-7 text-dark-custom mb-1">Acompanhamento com profissional</p>
-                <p className="text-muted fs-9 mb-0">
-                  Profissionais preparados para te ouvir e orientar a qualquer momento.
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <div
+              className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 cursor-pointer"
+              onClick={() => {}}
+            >
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[rgba(28,151,112,0.1)] mb-2">
+                <FiHeart size={18} color="#1c9770" />
               </div>
+              <p className="font-bold text-[14px] text-[#1A202C] mb-1">Acompanhamento com profissional</p>
+              <p className="text-[#6B7685] text-[12px]">
+                Profissionais preparados para te ouvir e orientar a qualquer momento.
+              </p>
             </div>
-            <div className="col-12 col-md-6">
-              <div
-                className="bg-white rounded-3 border shadow-card p-3 h-100 cursor-pointer"
-                onClick={() => {}}
-              >
-                <div className="icon-box-sm rounded-3 d-flex align-items-center justify-content-center bg-primary-subtle-custom mb-2">
-                  <FiPhone size={18} color="#1c9770" />
-                </div>
-                <p className="fw-bold fs-7 text-dark-custom mb-1">Pronto atendimento</p>
-                <p className="text-muted fs-9 mb-0">
-                  Serviço de psicólogo online, pronto atendimento a qualquer hora e lugar.
-                </p>
+            <div
+              className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 cursor-pointer"
+              onClick={() => {}}
+            >
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[rgba(28,151,112,0.1)] mb-2">
+                <FiPhone size={18} color="#1c9770" />
               </div>
+              <p className="font-bold text-[14px] text-[#1A202C] mb-1">Pronto atendimento</p>
+              <p className="text-[#6B7685] text-[12px]">
+                Serviço de psicólogo online, pronto atendimento a qualquer hora e lugar.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold fs-6 text-dark-custom mb-3">Não está se sentindo bem?</h2>
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Não está se sentindo bem?</h2>
           <div
-            className="rounded-3 p-3 d-flex align-items-center justify-content-between border-primary-subtle cursor-pointer"
-            style={{ backgroundColor: 'rgba(28,151,112,0.05)' }}
+            className="rounded-xl p-3 flex items-center justify-between border border-[rgba(28,151,112,0.2)] bg-[rgba(28,151,112,0.05)] cursor-pointer"
             onClick={() => {}}
           >
             <div>
-              <p className="fw-bold fs-7 text-primary mb-0">CVV - Centro de Valorização da Vida</p>
-              <p className="text-muted fs-9 mb-0">Receber auxílio</p>
+              <p className="font-bold text-[14px] text-[#1c9770]">CVV - Centro de Valorização da Vida</p>
+              <p className="text-[#6B7685] text-[12px]">Receber auxílio</p>
             </div>
             <FiArrowRight size={18} color="#1c9770" />
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold fs-6 text-dark-custom mb-3">Dúvidas frequentes</h2>
-          <div className="d-flex flex-column gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Dúvidas frequentes</h2>
+          <div className="flex flex-col gap-2">
             {artigos.map(({ id, title, desc }) => (
               <div
                 key={id}
-                className="bg-white rounded-3 border shadow-card p-3 d-flex align-items-center gap-3 cursor-pointer"
+                className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 flex items-center gap-3 cursor-pointer"
               >
-                <div className="flex-fill">
-                  <p className="fw-bold mb-0 fs-7 text-dark-custom">{title}</p>
-                  <p className="mb-0 text-muted fs-9">{desc}</p>
+                <div className="flex-1">
+                  <p className="font-bold text-[14px] text-[#1A202C]">{title}</p>
+                  <p className="text-[#6B7685] text-[12px]">{desc}</p>
                 </div>
                 <FiArrowRight size={16} color="#1c9770" />
               </div>
@@ -109,7 +104,7 @@ const Mind = () => {
 
         <section>
           <button
-            className="btn w-100 rounded-3 py-3 fw-bold fs-7 text-white bg-gradient-accent1 shadow-primary d-flex align-items-center justify-content-center gap-2"
+            className="w-full rounded-xl py-3 font-bold text-[14px] text-white bg-gradient-accent1 shadow-brand-primary flex items-center justify-center gap-2 cursor-pointer"
             onClick={() => {}}
           >
             <FiPhone size={18} color="#fff" /> Receber auxílio agora
