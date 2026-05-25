@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FiArrowLeft, FiArrowRight, FiUser, FiAward, FiEdit2, FiActivity } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight, FiUser, FiAward } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/Bottomnav'
 
 const Perfil = () => {
   const navigate = useNavigate()
@@ -61,48 +61,48 @@ const Perfil = () => {
   }
 
   return (
-    <div className="min-vh-100 bg-body">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
-      <main className="container py-3 pb-5 mb-4">
+      <main className="w-full px-4 lg:px-8 pt-4 pb-24">
 
-        <section className="d-flex align-items-center gap-2 mb-4">
+        <section className="flex items-center gap-2 mb-4">
           <button
-            className="btn btn-link p-0 text-decoration-none text-muted"
+            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
             onClick={() => navigate('/inicial')}
           >
             <FiArrowLeft size={20} />
           </button>
-          <h1 className="fw-bold mb-0 fs-5 text-dark-custom">Perfil</h1>
+          <h1 className="font-bold text-[20px] text-[#1A202C]">Perfil</h1>
         </section>
 
         <section className="mb-4">
-          <div className="bg-white rounded-3 border shadow-card p-3 d-flex align-items-center gap-3">
-            <div className="avatar-md rounded-circle bg-primary-subtle-custom d-flex align-items-center justify-content-center flex-shrink-0">
+          <div className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-[rgba(28,151,112,0.1)] flex items-center justify-center shrink-0">
               <FiUser size={24} color="#1c9770" />
             </div>
-            <div className="flex-fill">
-              <h2 className="fw-bold fs-6 text-dark-custom mb-0">Renato</h2>
-              <span className="badge rounded-pill bg-primary fs-9">Bronze</span>
+            <div className="flex-1">
+              <h2 className="font-bold text-[16px] text-[#1A202C]">Renato</h2>
+              <span className="inline-block rounded-full bg-[#1c9770] text-white px-2 py-0.5 text-[11px] font-medium">Bronze</span>
             </div>
-            <div className="bg-primary-subtle-custom rounded-3 px-3 py-2">
-              <span className="fw-bold text-primary fs-7">{points.toLocaleString('pt-BR')} pts</span>
+            <div className="bg-[rgba(28,151,112,0.1)] rounded-xl px-3 py-2">
+              <span className="font-bold text-[#1c9770] text-[14px]">{points.toLocaleString('pt-BR')} pts</span>
             </div>
           </div>
         </section>
 
         <section className="mb-4">
-          <h2 className="fw-bold fs-6 text-dark-custom mb-3">Missões diárias</h2>
-          <div className="bg-white rounded-3 border shadow-card p-3">
-            <div className="d-flex justify-content-between align-items-end gap-2">
+          <h2 className="font-bold text-[16px] text-[#1A202C] mb-3">Missões diárias</h2>
+          <div className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3">
+            <div className="flex justify-between items-end gap-2">
               {missoesDiarias.map(({ dia, quantidade }) => (
-                <div key={dia} className="d-flex flex-column align-items-center gap-1 flex-fill">
-                  <span className="text-primary fw-bold fs-9">{quantidade}</span>
+                <div key={dia} className="flex flex-col items-center gap-1 flex-1">
+                  <span className="text-[#1c9770] font-bold text-[12px]">{quantidade}</span>
                   <div
-                    className="w-100 rounded-2 bg-primary"
+                    className="w-full rounded bg-[#1c9770]"
                     style={{ height: `${(quantidade / maxMissoes) * 60}px` }}
                   />
-                  <span className="text-muted fs-9">{dia}</span>
+                  <span className="text-[#6B7685] text-[12px]">{dia}</span>
                 </div>
               ))}
             </div>
@@ -110,73 +110,74 @@ const Perfil = () => {
         </section>
 
         <section className="mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold fs-6 text-dark-custom mb-0">Troféus</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Troféus</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
+              className="bg-transparent border-0 p-0 text-[#1c9770] flex items-center gap-1 text-[14px] cursor-pointer"
               onClick={() => {}}
             >
               Ver todos <FiArrowRight size={13} color="#1c9770" />
             </button>
           </div>
-          <div className="row g-3">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
             {trofeus.map(({ id, title, desc, conquistado }) => (
-              <div key={id} className="col-6 col-md-4">
-                <div className={`bg-white rounded-3 border shadow-card p-3 text-center h-100 ${!conquistado ? 'opacity-50' : ''}`}>
-                  <div className={`avatar-sm rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 ${conquistado ? 'bg-primary' : 'bg-primary-subtle-custom'}`}>
-                    <FiAward size={18} color={conquistado ? '#fff' : '#1c9770'} />
-                  </div>
-                  <p className="fw-bold fs-9 text-dark-custom mb-1">{title}</p>
-                  <p className="text-muted fs-9 mb-0">{desc}</p>
+              <div
+                key={id}
+                className={`bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3 text-center ${!conquistado ? 'opacity-50' : ''}`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 ${conquistado ? 'bg-[#1c9770]' : 'bg-[rgba(28,151,112,0.1)]'}`}>
+                  <FiAward size={18} color={conquistado ? '#fff' : '#1c9770'} />
                 </div>
+                <p className="font-bold text-[12px] text-[#1A202C] mb-1">{title}</p>
+                <p className="text-[#6B7685] text-[12px]">{desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section>
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="fw-bold fs-6 text-dark-custom mb-0">Informações pessoais</h2>
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="font-bold text-[16px] text-[#1A202C]">Informações pessoais</h2>
             <button
-              className="btn btn-link p-0 text-decoration-none text-primary d-flex align-items-center gap-1 fs-7"
+              className="bg-transparent border-0 p-0 text-[#1c9770] text-[14px] cursor-pointer"
               onClick={() => navigate('/cadastro')}
             >
               Alterar
             </button>
           </div>
-          <div className="bg-white rounded-3 border shadow-card p-3">
-            <div className="d-flex flex-column gap-3">
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="text-muted fs-7">Peso</span>
-                <span className="fw-bold fs-7 text-dark-custom">
+          <div className="bg-white rounded-xl border border-[#E4E7EB] shadow-brand-card p-3">
+            <div className="flex flex-col gap-3">
+              <div className="flex justify-between items-center">
+                <span className="text-[#6B7685] text-[14px]">Peso</span>
+                <span className="font-bold text-[14px] text-[#1A202C]">
                   {userData?.peso ? `${userData.peso} kg` : '-'}
                 </span>
               </div>
-              <hr className="my-0" />
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="text-muted fs-7">Altura</span>
-                <span className="fw-bold fs-7 text-dark-custom">
+              <hr className="border-[#E4E7EB] m-0" />
+              <div className="flex justify-between items-center">
+                <span className="text-[#6B7685] text-[14px]">Altura</span>
+                <span className="font-bold text-[14px] text-[#1A202C]">
                   {userData?.altura ? `${userData.altura} cm` : '-'}
                 </span>
               </div>
-              <hr className="my-0" />
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="text-muted fs-7">Nível de atividade</span>
-                <span className="fw-bold fs-7 text-dark-custom">
+              <hr className="border-[#E4E7EB] m-0" />
+              <div className="flex justify-between items-center">
+                <span className="text-[#6B7685] text-[14px]">Nível de atividade</span>
+                <span className="font-bold text-[14px] text-[#1A202C]">
                   {nivelLabel('nivelAtividade', userData?.nivelAtividade)}
                 </span>
               </div>
-              <hr className="my-0" />
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="text-muted fs-7">Qualidade do sono</span>
-                <span className="fw-bold fs-7 text-dark-custom">
+              <hr className="border-[#E4E7EB] m-0" />
+              <div className="flex justify-between items-center">
+                <span className="text-[#6B7685] text-[14px]">Qualidade do sono</span>
+                <span className="font-bold text-[14px] text-[#1A202C]">
                   {nivelLabel('qualidadeSono', userData?.qualidadeSono)}
                 </span>
               </div>
-              <hr className="my-0" />
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="text-muted fs-7">Nível de energia</span>
-                <span className="fw-bold fs-7 text-dark-custom">
+              <hr className="border-[#E4E7EB] m-0" />
+              <div className="flex justify-between items-center">
+                <span className="text-[#6B7685] text-[14px]">Nível de energia</span>
+                <span className="font-bold text-[14px] text-[#1A202C]">
                   {nivelLabel('nivelEnergia', userData?.nivelEnergia)}
                 </span>
               </div>
