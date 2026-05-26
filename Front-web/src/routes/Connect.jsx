@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiArrowRight, FiWifi, FiActivity, FiDroplet } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
+import Flux from '../assets/img.png'
+import FluxPC from '../assets/imgPC.png'
 
 const Connect = () => {
   const navigate = useNavigate()
@@ -29,17 +31,22 @@ const Connect = () => {
     <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar points={points} showPoints={true} />
 
+          
+          <div className='relative w-full'>
+            <img src={Flux} alt="" className='w-full block lg:hidden'/>
+            <img src={FluxPC} alt="" className='w-full hidden lg:block'/>
+            
+                    <section className="flex items-center gap-2 mb-4 absolute bottom-[63%] md:bottom-[79%] lg:bottom-[87%] left-4 lg:left-8 z-10">
+            <button
+              className="bg-transparent border-0 p-0 text-[white] cursor-pointer "
+              onClick={() => navigate('/inicial')}
+            >
+              <FiArrowLeft size={20} />
+            </button>
+            <h1 className="font-bold text-[20px] text-[white]">Connect+</h1>
+                    </section>
+          </div>
       <main className="w-full px-4 lg:px-8 pt-4 pb-24">
-
-        <section className="flex items-center gap-2 mb-4">
-          <button
-            className="bg-transparent border-0 p-0 text-[#6B7685] cursor-pointer"
-            onClick={() => navigate('/inicial')}
-          >
-            <FiArrowLeft size={20} />
-          </button>
-          <h1 className="font-bold text-[20px] text-[#1A202C]">Connect+</h1>
-        </section>
 
         <section className="mb-4">
           <div className="bg-gradient-accent2 shadow-brand-primary rounded-xl p-4 text-center">
