@@ -5,11 +5,29 @@ import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
 
 const Perfil = () => {
+  const [nome, setNome] = useState('')
   const navigate = useNavigate()
   const points = 1500
   const [userData, setUserData] = useState(null)
 
   useEffect(() => {
+    async function carregarUsuario() {
+
+      const carteirinha =
+        localStorage.getItem("carteirinha")
+
+      const resposta = await fetch(
+        `http://127.0.0.1:8000/usuario/${carteirinha}`
+      )
+
+      const dados = await resposta.json()
+
+      setNome(dados.nome)
+    }
+
+    carregarUsuario()
+
+
     const saved = localStorage.getItem('boostcare_user')
     if (saved) setUserData(JSON.parse(saved))
   }, [])
@@ -82,7 +100,7 @@ const Perfil = () => {
               <FiUser size={24} color="#1c9770" />
             </div>
             <div className="flex-1">
-              <h2 className="font-bold text-[16px] text-[#1A202C]">Renato</h2>
+              <h2 className="font-bold text-[16px] text-[#1A202C]">{nome}</h2>
               <span className="inline-block rounded-full bg-[#1c9770] text-white px-2 py-0.5 text-[11px] font-medium">Bronze</span>
             </div>
             <div className="bg-[rgba(28,151,112,0.1)] rounded-xl px-3 py-2">
@@ -114,7 +132,7 @@ const Perfil = () => {
             <h2 className="font-bold text-[16px] text-[#1A202C]">Troféus</h2>
             <button
               className="bg-transparent border-0 p-0 text-[#1c9770] flex items-center gap-1 text-[14px] cursor-pointer"
-              onClick={() => {}}
+              onClick={() => { }}
             >
               Ver todos <FiArrowRight size={13} color="#1c9770" />
             </button>

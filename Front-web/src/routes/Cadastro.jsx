@@ -7,6 +7,7 @@ import TopBar from '../components/TopBar'
 
 const Cadastro = () => {
   const navigate = useNavigate()
+  const [nome, setNome] = useState('')
 
   const [formData, setFormData] = useState({
     nome: '',

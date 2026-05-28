@@ -1,15 +1,37 @@
 import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { FiArrowLeft, FiAward } from 'react-icons/fi'
 import TopBar from '../components/TopBar'
 import BottomNav from '../components/Bottomnav'
 
 const Ranking = () => {
+  const [nome, setNome] = useState('')
   const navigate = useNavigate()
 
   const points = 1500
 
+  useEffect(() => {
+
+  async function carregarUsuario() {
+
+    const carteirinha =
+      localStorage.getItem("carteirinha")
+
+    const resposta = await fetch(
+      `http://127.0.0.1:8000/usuario/${carteirinha}`
+    )
+
+    const dados = await resposta.json()
+
+    setNome(dados.nome)
+  }
+
+  carregarUsuario()
+
+}, [])
+
   const rankingData = [
-    { id: 1, nome: 'Renato', pontos: 1500, atual: true },
+    { id: 1, nome: nome, pontos: 1500, atual: true },
     { id: 2, nome: 'Maria', pontos: 1200, atual: false },
     { id: 3, nome: 'Emiliano', pontos: 1120, atual: false },
     { id: 4, nome: 'Artur', pontos: 980, atual: false },
@@ -48,7 +70,7 @@ const Ranking = () => {
               <FiAward size={32} color="#fff" />
             </div>
             <h2 className="font-bold text-white text-[20px] mb-1">Você está em 1° lugar!</h2>
-            <p className="text-white opacity-75 text-[13px] mb-2">Parabéns, Renato!</p>
+            <p className="text-white opacity-75 text-[13px] mb-2">Parabéns, {nome}!</p>
             <span className="font-bold inline-block px-3 py-1 rounded-full bg-white text-[#1c9770] text-[14px]">
               {points.toLocaleString('pt-BR')} pts
             </span>
