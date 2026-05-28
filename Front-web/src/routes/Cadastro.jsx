@@ -9,6 +9,8 @@ const Cadastro = () => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
+    nome: '',
+    carteirinha: '',
     peso: '',
     altura: '',
     nivelAtividade: '',
@@ -55,19 +57,41 @@ const Cadastro = () => {
     setStep(2)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const dadosFinais = {
+      nome: formData.nome,
+      carteirinha: formData.carteirinha,
       peso: formData.peso,
       altura: formData.altura,
       nivelAtividade: formData.nivelAtividade,
       qualidadeSono: formData.qualidadeSono,
       nivelEnergia: formData.nivelEnergia,
     }
-    localStorage.setItem('boostcare_user', JSON.stringify(dadosFinais))
+    const resposta = await fetch(
+      "http://127.0.0.1:8000/cadastro",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(dadosFinais),
+      }
+    )
+
+    const dados = await resposta.json()
+
+    console.log(dados)
+
     navigate('/inicial')
   }
 
-  const isStep1Valid = formData.peso !== '' && formData.altura !== ''
+  const isStep1Valid =
+    formData.nome !== '' &&
+    formData.carteirinha !== '' &&
+    formData.peso !== '' &&
+    formData.altura !== ''
   const isStep2Valid = formData.nivelAtividade !== '' && formData.qualidadeSono !== '' && formData.nivelEnergia !== ''
 
   const RadioCard = ({ field, value, label, desc }) => {
@@ -93,7 +117,6 @@ const Cadastro = () => {
   return (
     <div className="min-h-screen bg-[#F4F6F8]">
       <TopBar showPoints={false} />
-
       <main className="w-full px-4 lg:px-8 pt-4 pb-10">
         <div className="flex justify-center">
           <div className="w-full lg:max-w-lg">
@@ -129,6 +152,34 @@ const Cadastro = () => {
                   <p className="text-[14px] text-[#1A202C]">
                     As informações podem ser alteradas a qualquer momento na aba Perfil.
                   </p>
+                </div>
+
+                <div className="mb-3">
+                  <label className="font-bold mb-2 block text-[14px] text-[#1A202C]">
+                    Nome
+                  </label>
+
+                  <input
+                    type="text"
+                    className="w-full rounded-xl py-3 bg-white px-3 border text-[14px] border-[#E4E7EB] outline-none focus:border-[#1c9770] "
+                    placeholder="Digite seu nome"
+                    value={formData.nome}
+                    onChange={e => handleChange('nome', e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="font-bold mb-2 block text-[14px] text-[#1A202C]">
+                    Carteirinha
+                  </label>
+
+                  <input
+                    type="number"
+                    className="w-full rounded-xl bg-white py-3 px-3 border text-[14px] border-[#E4E7EB] outline-none focus:border-[#1c9770] "
+                    placeholder="Ex: 000000"
+                    value={formData.carteirinha}
+                    onChange={e => handleChange('carteirinha', e.target.value)}
+                  />
                 </div>
 
                 <div className="mb-3">
