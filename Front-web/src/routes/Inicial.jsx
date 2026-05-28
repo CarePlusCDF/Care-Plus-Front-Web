@@ -11,13 +11,29 @@ import mockupDesktop from '../assets/mucupePC.png'
 
 const Inicial = () => {
   const navigate = useNavigate()
-  const [userData, setUserData] = useState(null)
+  const [nome, setNome] = useState('')
 
   useEffect(() => {
-    const saved = localStorage.getItem('boostcare_user')
-    if (saved) setUserData(JSON.parse(saved))
-  }, [])
 
+  async function carregarUsuario() {
+
+    const carteirinha =
+      localStorage.getItem("carteirinha")
+
+    if (!carteirinha) return
+
+    const resposta = await fetch(
+      `http://127.0.0.1:8000/usuario/${carteirinha}`
+    )
+
+    const dados = await resposta.json()
+
+    setNome(dados.nome)
+  }
+
+  carregarUsuario()
+
+}, [])
   const points = 1500
 
   const missoesAtivas = [
@@ -50,7 +66,7 @@ const Inicial = () => {
 
         <div className="absolute bottom-[10%] left-4 lg:left-8 z-10">
           <p className="text-white text-sm md:text-[23px] leading-none mb-1">Olá,</p>
-          <h1 className="font-bold text-[20px] md:text-[29px] lg:text-[32px] text-white leading-none">Renato!</h1>
+          <h1 className="font-bold text-[20px] md:text-[29px] lg:text-[32px] text-white leading-none">{nome}!</h1>
           <p className="text-white text-[15px] md:text-[21px] lg:text-[25px] mt-1 leading-tight">
             Continue sua jornada de bem-estar hoje.
           </p>

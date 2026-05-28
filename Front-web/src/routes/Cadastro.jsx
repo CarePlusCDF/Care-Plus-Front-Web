@@ -13,35 +13,131 @@ const Cadastro = () => {
     carteirinha: '',
     peso: '',
     altura: '',
-    nivelAtividade: '',
-    qualidadeSono: '',
-    nivelEnergia: '',
+
+    atividadeFisica: '',
+    tempoSentado: '',
+    distanciaDia: '',
+    agua: '',
+    sono: '',
+    celular: '',
+    pausas: '',
+    cafeina: '',
+    arLivre: '',
+    refeicoes: '',
   })
 
   const [step, setStep] = useState(1)
 
-  const nivelAtividadeOpcoes = [
-    { value: 'sedentario', label: 'Sedentário', desc: 'Raramente pratico atividades físicas.' },
-    { value: 'leve', label: 'Levemente ativo', desc: 'Me movimento um pouco no dia a dia.' },
-    { value: 'moderado', label: 'Moderadamente ativo', desc: 'Pratico exercícios algumas vezes por semana.' },
-    { value: 'ativo', label: 'Ativo', desc: 'Tenho rotina regular de treinos ou esportes.' },
-    { value: 'muito_ativo', label: 'Muito ativo', desc: 'Pratico atividades intensas quase todos os dias.' },
-  ]
+  const perguntas = [
+    {
+      field: "atividadeFisica",
+      pergunta: "Quantos dias por semana você pratica atividade física?",
+      opcoes: [
+        { value: "0", label: "0 dias" },
+        { value: "1_2", label: "1 a 2 dias" },
+        { value: "3_4", label: "3 a 4 dias" },
+        { value: "5_7", label: "5 a 7 dias" },
+      ]
+    },
 
-  const qualidadeSonoOpcoes = [
-    { value: 'muito_ruim', label: 'Muito ruim', desc: 'Durmo mal quase todas as noites.' },
-    { value: 'ruim', label: 'Ruim', desc: 'Tenho dificuldades com frequência.' },
-    { value: 'regular', label: 'Regular', desc: 'Durmo ok, mas poderia melhorar.' },
-    { value: 'boa', label: 'Boa', desc: 'Na maior parte das noites durmo bem.' },
-    { value: 'excelente', label: 'Excelente', desc: 'Descanso profundamente e acordo renovado.' },
-  ]
+    {
+      field: "tempoSentado",
+      pergunta: "Quantos minutos você passa sentado por dia?",
+      opcoes: [
+        { value: "menos_2h", label: "Menos de 2h" },
+        { value: "2_5h", label: "2 a 5h" },
+        { value: "5_8h", label: "5 a 8h" },
+        { value: "mais_8h", label: "Mais de 8h" },
+      ]
+    },
 
-  const nivelEnergiaOpcoes = [
-    { value: 'muito_baixo', label: 'Muito baixo', desc: 'Sinto cansaço constante.' },
-    { value: 'baixo', label: 'Baixo', desc: 'Tenho energia limitada na maior parte do dia.' },
-    { value: 'moderado', label: 'Moderado', desc: 'Às vezes disposto, às vezes não.' },
-    { value: 'bom', label: 'Bom', desc: 'Me sinto bem disposto na maioria dos dias.' },
-    { value: 'excelente', label: 'Excelente', desc: 'Tenho muita energia durante todo o dia.' },
+    {
+      field: "distanciaDia",
+      pergunta: "Qual a distância média que você percorre por dia?",
+      opcoes: [
+        { value: "menos_1", label: "Menos de 1km" },
+        { value: "1_3", label: "1 a 3km" },
+        { value: "3_6", label: "3 a 6km" },
+        { value: "mais_6", label: "Mais de 6km" },
+      ]
+    },
+
+    {
+      field: "agua",
+      pergunta: "Quantos litros de água você bebe por dia?",
+      opcoes: [
+        { value: "menos_1", label: "Menos de 1L" },
+        { value: "1_2", label: "1 a 2L" },
+        { value: "2_3", label: "2 a 3L" },
+        { value: "mais_3", label: "Mais de 3L" },
+      ]
+    },
+
+    {
+      field: "sono",
+      pergunta: "Quantas horas você dorme por noite?",
+      opcoes: [
+        { value: "menos_5", label: "Menos de 5h" },
+        { value: "5_7", label: "5 a 7h" },
+        { value: "7_9", label: "7 a 9h" },
+        { value: "mais_9", label: "Mais de 9h" },
+      ]
+    },
+
+    {
+      field: "celular",
+      pergunta: "Quantas horas por dia você passa no celular?",
+      opcoes: [
+        { value: "menos_2", label: "Menos de 2h" },
+        { value: "2_5", label: "2 a 5h" },
+        { value: "5_8", label: "5 a 8h" },
+        { value: "mais_8", label: "Mais de 8h" },
+      ]
+    },
+
+    {
+      field: "pausas",
+      pergunta: "Quantas pausas você faz durante o dia?",
+      opcoes: [
+        { value: "0", label: "Nenhuma" },
+        { value: "1_3", label: "1 a 3 pausas" },
+        { value: "4_6", label: "4 a 6 pausas" },
+        { value: "mais_6", label: "Mais de 6 pausas" },
+      ]
+    },
+
+    {
+      field: "cafeina",
+      pergunta: "Quantos copos de cafeína você consome por dia?",
+      opcoes: [
+        { value: "0", label: "Nenhum" },
+        { value: "1_2", label: "1 a 2 copos" },
+        { value: "3_5", label: "3 a 5 copos" },
+        { value: "mais_5", label: "Mais de 5 copos" },
+      ]
+    },
+
+    {
+      field: "arLivre",
+      pergunta: "Quantos minutos por dia você passa ao ar livre?",
+      opcoes: [
+        { value: "0_15", label: "0 a 15 min" },
+        { value: "15_30", label: "15 a 30 min" },
+        { value: "30_60", label: "30 a 60 min" },
+        { value: "mais_60", label: "Mais de 60 min" },
+      ]
+    },
+
+    {
+      field: "refeicoes",
+      pergunta: "Quantas refeições você faz por dia?",
+      opcoes: [
+        { value: "1_2", label: "1 a 2 refeições" },
+        { value: "3", label: "3 refeições" },
+        { value: "4_5", label: "4 a 5 refeições" },
+        { value: "mais_5", label: "Mais de 5 refeições" },
+      ]
+    },
   ]
 
   const handleChange = (field, value) => {
@@ -63,9 +159,17 @@ const Cadastro = () => {
       carteirinha: formData.carteirinha,
       peso: formData.peso,
       altura: formData.altura,
-      nivelAtividade: formData.nivelAtividade,
-      qualidadeSono: formData.qualidadeSono,
-      nivelEnergia: formData.nivelEnergia,
+
+      atividadeFisica: formData.atividadeFisica,
+      tempoSentado: formData.tempoSentado,
+      distanciaDia: formData.distanciaDia,
+      agua: formData.agua,
+      sono: formData.sono,
+      celular: formData.celular,
+      pausas: formData.pausas,
+      cafeina: formData.cafeina,
+      arLivre: formData.arLivre,
+      refeicoes: formData.refeicoes,
     }
     const resposta = await fetch(
       "http://127.0.0.1:8000/cadastro",
@@ -83,7 +187,11 @@ const Cadastro = () => {
     const dados = await resposta.json()
 
     console.log(dados)
-
+    
+    localStorage.setItem(
+  "carteirinha",
+    formData.carteirinha
+  )
     navigate('/inicial')
   }
 
@@ -92,7 +200,9 @@ const Cadastro = () => {
     formData.carteirinha !== '' &&
     formData.peso !== '' &&
     formData.altura !== ''
-  const isStep2Valid = formData.nivelAtividade !== '' && formData.qualidadeSono !== '' && formData.nivelEnergia !== ''
+  const isStep2Valid = perguntas.every(
+    pergunta => formData[pergunta.field] !== ''
+  )
 
   const RadioCard = ({ field, value, label, desc }) => {
     const selected = formData[field] === value
@@ -174,7 +284,7 @@ const Cadastro = () => {
                   </label>
 
                   <input
-                    type="number"
+                    type="text"
                     className="w-full rounded-xl bg-white py-3 px-3 border text-[14px] border-[#E4E7EB] outline-none focus:border-[#1c9770] "
                     placeholder="Ex: 000000"
                     value={formData.carteirinha}
@@ -216,44 +326,41 @@ const Cadastro = () => {
 
             {step === 2 && (
               <section>
-                <div className="flex items-center gap-3 rounded-xl p-3 mb-4 bg-[rgba(28,151,112,0.07)] border border-[rgba(28,151,112,0.2)]">
-                  <FiActivity size={20} color="#1c9770" />
-                  <p className="text-[14px] text-[#1A202C]">
-                    Suas respostas ajudam a criar uma jornada de saúde personalizada para você.
-                  </p>
-                </div>
 
-                <div className="mb-4">
-                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Quão ativo você se considera?</h2>
-                  {nivelAtividadeOpcoes.map(({ value, label, desc }) => (
-                    <RadioCard key={value} field="nivelAtividade" value={value} label={label} desc={desc} />
-                  ))}
-                </div>
+                {perguntas.map((pergunta) => (
+                  <div className="mb-4" key={pergunta.field}>
 
-                <div className="mb-4">
-                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Como você avalia sua qualidade de sono?</h2>
-                  {qualidadeSonoOpcoes.map(({ value, label, desc }) => (
-                    <RadioCard key={value} field="qualidadeSono" value={value} label={label} desc={desc} />
-                  ))}
-                </div>
+                    <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">
+                      {pergunta.pergunta}
+                    </h2>
 
-                <div className="mb-4">
-                  <h2 className="font-bold mb-3 text-[14px] text-[#1A202C]">Como está seu nível de energia no dia a dia?</h2>
-                  {nivelEnergiaOpcoes.map(({ value, label, desc }) => (
-                    <RadioCard key={value} field="nivelEnergia" value={value} label={label} desc={desc} />
-                  ))}
-                </div>
+                    {pergunta.opcoes.map(({ value, label }) => (
+                      <RadioCard
+                        key={value}
+                        field={pergunta.field}
+                        value={value}
+                        label={label}
+                        desc=""
+                      />
+                    ))}
+
+                  </div>
+                ))}
 
                 <button
-                  className={`w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-white text-[14px] cursor-pointer ${isStep2Valid ? 'bg-[#1c9770] shadow-brand-primary' : 'bg-[#CDD3DA] cursor-not-allowed'}`}
+                  className={`w-full font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-white text-[14px] cursor-pointer ${isStep2Valid
+                      ? 'bg-[#1c9770] shadow-brand-primary'
+                      : 'bg-[#CDD3DA] cursor-not-allowed'
+                    }`}
                   onClick={() => isStep2Valid && handleSubmit()}
                   disabled={!isStep2Valid}
                 >
-                  Começar minha jornada <FiArrowRight size={18} color="#fff" />
+                  Começar minha jornada
+                  <FiArrowRight size={18} color="#fff" />
                 </button>
+
               </section>
             )}
-
           </div>
         </div>
       </main>
