@@ -75,7 +75,6 @@ src/
 - Interface responsiva para mobile, tablet e desktop
 - Design system completo baseado na paleta oficial da Care Plus
 
-
 ## Como Executar
 
 Clone o repositório:
