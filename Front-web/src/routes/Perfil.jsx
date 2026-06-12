@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiArrowRight, FiUser, FiAward, FiLogOut } from 'react-icons/fi'
 import TopBar from '../components/TopBar.jsx'
 import Bottomnav from '../components/Bottomnav.jsx'
-import { limparSessaoUsuario } from '../services/sessao.js'
+import { API_URL, limparSessaoUsuario } from '../services/sessao.js'
 
 const Perfil = () => {
   const [nome, setNome] = useState('')
@@ -24,7 +24,7 @@ const Perfil = () => {
       }
 
       const resposta = await fetch(
-        `http://127.0.0.1:8000/usuario/${carteirinha}`
+        `${API_URL}/usuario/${carteirinha}`
       )
 
       const dados = await resposta.json()
@@ -80,7 +80,7 @@ const Perfil = () => {
       }
 
       const resposta = await fetch(
-        `http://127.0.0.1:8000/usuario/${carteirinha}`
+        `${API_URL}/usuario/${carteirinha}`
       )
 
       const dados = await resposta.json()

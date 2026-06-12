@@ -1,6 +1,7 @@
 import { FiBell } from 'react-icons/fi'
 import { FaTrophy } from 'react-icons/fa';
 import { useEffect, useState } from 'react'
+import { API_URL } from '../services/sessao.js'
 
 const TopBar = ({ showPoints = true }) => {
 
@@ -14,7 +15,7 @@ const TopBar = ({ showPoints = true }) => {
       if (!carteirinha) return
 
       const resposta = await fetch(
-        `http://127.0.0.1:8000/usuario/${carteirinha}`
+        `${API_URL}/usuario/${carteirinha}`
       )
 
       const usuario = await resposta.json()

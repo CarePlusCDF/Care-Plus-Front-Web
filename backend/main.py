@@ -16,7 +16,7 @@ from storage import carregar_beneficios, carregar_usuarios, salvar_usuarios
 app = FastAPI()
 
 QUANTIDADE_BENEFICIOS_SESSAO = 6
-FIWARE_URL = os.getenv("FIWARE_URL", "http://34.95.202.198").rstrip("/")
+FIWARE_URL = os.getenv("FIWARE_URL", "http://localhost:1026").rstrip("/")
 FIWARE_SERVICE = os.getenv("FIWARE_SERVICE", "smart")
 FIWARE_SERVICEPATH = os.getenv("FIWARE_SERVICEPATH", "/")
 FIWARE_PEDOMETER_ENTITY_ID = os.getenv(
@@ -414,9 +414,10 @@ def garantir_beneficios_sessao(
 
 
 # libera acesso do frontend
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
